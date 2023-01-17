@@ -5,10 +5,10 @@
 
 
  * @since         4.3.0
-  */module uim.http.TestSuite;
+  */module uim.net.http.TestSuite;
 
-import uim.http.Client;
-import uim.http.Client\Response;
+import uim.net.http.Client;
+import uim.net.http.Client\Response;
 
 /**
  * Define mock responses and have mocks automatically cleared.
@@ -43,7 +43,7 @@ trait HttpClientTrait
      * Add a mock response for a POST request.
      *
      * @param string $url The URL to mock
-     * @param uim.http.Client\Response $response The response for the mock.
+     * @param uim.net.http.Client\Response $response The response for the mock.
      * @param array<string, mixed> $options Additional options. See Client::addMockResponse()
      */
     void mockClientPost(string $url, Response $response, STRINGAA someOptions = null) {
@@ -54,7 +54,7 @@ trait HttpClientTrait
      * Add a mock response for a GET request.
      *
      * @param string $url The URL to mock
-     * @param uim.http.Client\Response $response The response for the mock.
+     * @param uim.net.http.Client\Response $response The response for the mock.
      * @param array<string, mixed> $options Additional options. See Client::addMockResponse()
      */
     void mockClientGet(string $url, Response $response, STRINGAA someOptions = null) {
@@ -65,7 +65,7 @@ trait HttpClientTrait
      * Add a mock response for a PATCH request.
      *
      * @param string $url The URL to mock
-     * @param uim.http.Client\Response $response The response for the mock.
+     * @param uim.net.http.Client\Response $response The response for the mock.
      * @param array<string, mixed> $options Additional options. See Client::addMockResponse()
      */
     void mockClientPatch(string $url, Response $response, STRINGAA someOptions = null) {
@@ -76,7 +76,7 @@ trait HttpClientTrait
      * Add a mock response for a PUT request.
      *
      * @param string $url The URL to mock
-     * @param uim.http.Client\Response $response The response for the mock.
+     * @param uim.net.http.Client\Response $response The response for the mock.
      * @param array<string, mixed> $options Additional options. See Client::addMockResponse()
      */
     void mockClientPut(string $url, Response $response, STRINGAA someOptions = null) {
@@ -87,7 +87,7 @@ trait HttpClientTrait
      * Add a mock response for a DELETE request.
      *
      * @param string $url The URL to mock
-     * @param uim.http.Client\Response $response The response for the mock.
+     * @param uim.net.http.Client\Response $response The response for the mock.
      * @param array<string, mixed> $options Additional options. See Client::addMockResponse()
      */
     void mockClientDelete(string $url, Response $response, STRINGAA someOptions = null) {

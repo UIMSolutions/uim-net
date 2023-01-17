@@ -2,13 +2,13 @@
 	Copyright: © 2015-2023 Ozan Nurettin Süel (Sicherheitsschmiede)                                        
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
-**********************************************************************************************************/module uim.https\Middleware;
+**********************************************************************************************************/module uim.net.https\Middleware;
 
 use ArrayAccess;
-import uim.http.exceptions.InvalidCsrfTokenException;
-import uim.http.Session;
-import uim.cake.utilities.Hash;
-import uim.cake.utilities.Security;
+import uim.net.http.exceptions.InvalidCsrfTokenException;
+import uim.net.http.Session;
+import uim.net.utilities.Hash;
+import uim.net.utilities.Security;
 use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
 use Psr\Http\servers.IMiddleware;
@@ -217,9 +217,9 @@ class SessionCsrfProtectionMiddleware : IMiddleware
      * Validate the request data against the cookie token.
      *
      * @param \Psr\Http\messages.IServerRequest $request The request to validate against.
-     * @param uim.http.Session $session The session instance.
+     * @param uim.net.http.Session $session The session instance.
      * @return void
-     * @throws uim.http.exceptions.InvalidCsrfTokenException When the CSRF token is invalid or missing.
+     * @throws uim.net.http.exceptions.InvalidCsrfTokenException When the CSRF token is invalid or missing.
      */
     protected void validateToken(IServerRequest $request, Session $session) {
         $token = $session.read(_config["key"]);

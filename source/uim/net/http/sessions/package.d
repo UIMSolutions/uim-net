@@ -1,4 +1,4 @@
-module uim.http.sessions;
+module uim.net.http.sessions;
 
-import uim.http.sessions.cache;
-import uim.http.sessions.database;
+import uim.net.http.sessions.cache;
+import uim.net.http.sessions.database;

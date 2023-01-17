@@ -2,10 +2,10 @@
 	Copyright: © 2015-2023 Ozan Nurettin Süel (Sicherheitsschmiede)                                        
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
-**********************************************************************************************************/module uim.https\Middleware;
+**********************************************************************************************************/module uim.net.https\Middleware;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\messages.IResponse;
@@ -49,7 +49,7 @@ class HttpsEnforcerMiddleware : IMiddleware
      * Constructor
      *
      * @param array<string, mixed> aConfig The options to use.
-     * @see uim.http.Middleware\HttpsEnforcerMiddleware::aConfig
+     * @see uim.net.http.Middleware\HttpsEnforcerMiddleware::aConfig
      */
     this(Json aConfig = null) {
         this.config = aConfig + this.config;
@@ -64,7 +64,7 @@ class HttpsEnforcerMiddleware : IMiddleware
      * @param \Psr\Http\messages.IServerRequest $request The request.
      * @param \Psr\Http\servers.RequestHandlerInterface $handler The request handler.
      * @return \Psr\Http\messages.IResponse A response.
-     * @throws uim.http.exceptions.BadRequestException
+     * @throws uim.net.http.exceptions.BadRequestException
      */
     function process(IServerRequest $request, RequestHandlerInterface $handler): IResponse
     {

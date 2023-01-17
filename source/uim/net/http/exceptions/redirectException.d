@@ -1,4 +1,4 @@
-module uim.https\Exception;
+module uim.net.https\Exception;
 
 /**
  * An exception subclass used by routing and application code to

@@ -1,8 +1,8 @@
-module uim.http.Middleware;
+module uim.net.http.Middleware;
 
-import uim.http.Cookie\CookieCollection;
-import uim.http.Response;
-import uim.cake.utilities.CookieCryptTrait;
+import uim.net.http.Cookie\CookieCollection;
+import uim.net.http.Response;
+import uim.net.utilities.CookieCryptTrait;
 use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
 use Psr\Http\servers.IMiddleware;
@@ -16,7 +16,7 @@ use Psr\Http\servers.RequestHandlerInterface;
  * times.
  *
  * Cookies in request data will be decrypted, while cookies in response headers will
- * be encrypted automatically. If the response is a {@link uim.http\Response}, the cookie
+ * be encrypted automatically. If the response is a {@link uim.net.http\Response}, the cookie
  * data set with `withCookie()` and `cookie()`` will also be encrypted.
  *
  * The encryption types and padding are compatible with those used by CookieComponent
@@ -110,12 +110,12 @@ class EncryptedCookieMiddleware : IMiddleware
     /**
      * Encode cookies from a response"s CookieCollection.
      *
-     * @param uim.http.Response $response The response to encode cookies in.
-     * @return uim.http.Response Updated response with encoded cookies.
+     * @param uim.net.http.Response $response The response to encode cookies in.
+     * @return uim.net.http.Response Updated response with encoded cookies.
      */
     protected function encodeCookies(Response $response): Response
     {
-        /** @var array<uim.http\Cookie\CookieInterface> $cookies */
+        /** @var array<uim.net.http\Cookie\CookieInterface> $cookies */
         $cookies = $response.getCookieCollection();
         foreach ($cookies as $cookie) {
             if (hasAllValues($cookie.getName(), this.cookieNames, true)) {
@@ -135,7 +135,7 @@ class EncryptedCookieMiddleware : IMiddleware
      */
     protected function encodeSetCookieHeader(IResponse $response): IResponse
     {
-        /** @var array<uim.http\Cookie\CookieInterface> $cookies */
+        /** @var array<uim.net.http\Cookie\CookieInterface> $cookies */
         $cookies = CookieCollection::createFromHeader($response.getHeader("Set-Cookie"));
         $header = null;
         foreach ($cookies as $cookie) {

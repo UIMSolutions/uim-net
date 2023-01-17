@@ -1,4 +1,4 @@
-module uim.https\Middleware;
+module uim.net.https\Middleware;
 
 use ArrayAccess;
 use InvalidArgumentException;
@@ -345,7 +345,7 @@ class CsrfProtectionMiddleware : IMiddleware
      *
      * @param \Psr\Http\messages.IServerRequest $request The request to validate against.
      * @return void
-     * @throws uim.http.exceptions.InvalidCsrfTokenException When the CSRF token is invalid or missing.
+     * @throws uim.net.http.exceptions.InvalidCsrfTokenException When the CSRF token is invalid or missing.
      */
     protected void _validateToken(IServerRequest $request) {
         $cookie = Hash::get($request.getCookieParams(), _config["cookieName"]);

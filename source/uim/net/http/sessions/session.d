@@ -5,10 +5,10 @@
 
 
  * @since         0.10.0
-  */module uim.http;
+  */module uim.net.http;
 
-import uim.cake.core.App;
-import uim.cake.utilities.Hash;
+import uim.net.core.App;
+import uim.net.utilities.Hash;
 use InvalidArgumentException;
 use RuntimeException;
 use SessionHandlerInterface;
@@ -75,7 +75,7 @@ class Session
      *
      * @param array $sessionConfig Session config.
      * @return static
-     * @see uim.http.Session::__construct()
+     * @see uim.net.http.Session::__construct()
      */
     static function create(array $sessionConfig = null) {
         if (isset($sessionConfig["defaults"])) {
