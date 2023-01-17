@@ -1,7 +1,7 @@
-module uim.http.cookies.interface_;
+module uim.net.http.cookies.interface_;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 // Cookie Interface
 interface ICookie {

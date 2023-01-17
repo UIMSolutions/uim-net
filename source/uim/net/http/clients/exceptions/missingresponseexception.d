@@ -1,6 +1,6 @@
-module uim.http.clients\Exception;
+module uim.net.http.clients\Exception;
 
-import uim.cake.core.exceptions\UIMException;
+import uim.net.core.exceptions\UIMException;
 
 /**
  * Used to indicate that a request did not have a matching mock response.

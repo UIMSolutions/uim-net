@@ -1,4 +1,4 @@
-module uim.http.exceptions;
+module uim.net.http.exceptions;
 
 use Throwable;
 

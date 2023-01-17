@@ -1,7 +1,7 @@
-module uim.http.cookies.collection;
+module uim.net.http.cookies.collection;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 /**
  * Cookie Collection
@@ -13,14 +13,14 @@ class CookieCollection : IteratorAggregate, Countable {
     /**
      * Cookie objects
      *
-     * @var array<uim.http\Cookie\ICookie>
+     * @var array<uim.net.http\Cookie\ICookie>
      */
     protected cookies = null;
 
     /**
      * Constructor
      *
-     * @param array<uim.http\Cookie\ICookie> $cookies Array of cookie objects
+     * @param array<uim.net.http\Cookie\ICookie> $cookies Array of cookie objects
      */
     this(array $cookies = null) {
         this.checkCookies($cookies);
@@ -79,7 +79,7 @@ class CookieCollection : IteratorAggregate, Countable {
      * cookies if a cookie collection is used for cookies across multiple
      * domains. This can impact how get(), has() and remove() behave.
      *
-     * @param uim.http.Cookie\ICookie $cookie Cookie instance to add.
+     * @param uim.net.http.Cookie\ICookie $cookie Cookie instance to add.
      * @return static
      */
     function add(ICookie $cookie) {
@@ -93,7 +93,7 @@ class CookieCollection : IteratorAggregate, Countable {
      * Get the first cookie by name.
      *
      * @param string myName The name of the cookie.
-     * @return uim.http.Cookie\ICookie
+     * @return uim.net.http.Cookie\ICookie
      * @throws \InvalidArgumentException If cookie not found.
      */
     auto get(string myName): ICookie
@@ -153,7 +153,7 @@ class CookieCollection : IteratorAggregate, Countable {
     /**
      * Checks if only valid cookie objects are in the array
      *
-     * @param array<uim.http\Cookie\ICookie> $cookies Array of cookie objects
+     * @param array<uim.net.http\Cookie\ICookie> $cookies Array of cookie objects
      * @throws \InvalidArgumentException
      */
     protected void checkCookies(array $cookies) {
@@ -174,7 +174,7 @@ class CookieCollection : IteratorAggregate, Countable {
     /**
      * Gets the iterator
      *
-     * @return \Traversable<string, uim.http\Cookie\ICookie>
+     * @return \Traversable<string, uim.net.http\Cookie\ICookie>
      */
     Traversable getIterator() {
         return new ArrayIterator(this.cookies);

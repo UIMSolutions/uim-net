@@ -7,9 +7,9 @@
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
-module uim.http.Cookie;
+module uim.net.http.Cookie;
 
-import uim.cake.utilities.Hash;
+import uim.net.utilities.Hash;
 use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
@@ -38,8 +38,8 @@ use InvalidArgumentException;
  *
  * @link https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03
  * @link https://en.wikipedia.org/wiki/HTTP_cookie
- * @see uim.http.Cookie\CookieCollection for working with collections of cookies.
- * @see uim.http.Response::getCookieCollection() for working with response cookies.
+ * @see uim.net.http.Cookie\CookieCollection for working with collections of cookies.
+ * @see uim.net.http.Response::getCookieCollection() for working with response cookies.
  */
 class Cookie : CookieInterface
 {
@@ -97,7 +97,7 @@ class Cookie : CookieInterface
      * Default attributes for a cookie.
      *
      * @var array<string, mixed>
-     * @see uim.http.Cookie\Cookie::setDefaults()
+     * @see uim.net.http.Cookie\Cookie::setDefaults()
      */
     protected static $defaults = [
         "expires": null,
@@ -192,7 +192,7 @@ class Cookie : CookieInterface
      * @param array|string aValue Value of the cookie
      * @param array<string, mixed> $options Cookies options.
      * @return static
-     * @see uim.cake.Cookie\Cookie::setDefaults()
+     * @see uim.net.Cookie\Cookie::setDefaults()
      */
     static function create(string aName, $value, STRINGAA someOptions = null) {
         $options += static::$defaults;
@@ -251,7 +251,7 @@ class Cookie : CookieInterface
      * @param string $cookie Cookie header string.
      * @param array<string, mixed> $defaults Default attributes.
      * @return static
-     * @see uim.http.Cookie\Cookie::setDefaults()
+     * @see uim.net.http.Cookie\Cookie::setDefaults()
      */
     static function createFromHeaderString(string $cookie, array $defaults = null) {
         if (strpos($cookie, "";"") != false) {

@@ -9,7 +9,7 @@
  *
 
  * @since         3.1.7
-  */module uim.http.exceptions;
+  */module uim.net.http.exceptions;
 
 use Throwable;
 

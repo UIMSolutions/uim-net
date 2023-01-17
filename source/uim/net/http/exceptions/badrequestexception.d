@@ -1,7 +1,7 @@
-module uim.https\Exception;
+module uim.net.https\Exception;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 // Represents an HTTP 400 error.
 class BadRequestException : HttpException {

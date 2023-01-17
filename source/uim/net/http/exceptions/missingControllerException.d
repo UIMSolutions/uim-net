@@ -1,7 +1,7 @@
-module uim.https\Exception;
+module uim.net.https\Exception;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 /**
  * Missing Controller exception - used when a controller

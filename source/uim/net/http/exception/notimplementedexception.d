@@ -1,4 +1,4 @@
-module uim.http.exceptions;
+module uim.net.http.exceptions;
 
 /**
  * Not Implemented Exception - used when an API method is not implemented

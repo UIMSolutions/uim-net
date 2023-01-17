@@ -1,6 +1,6 @@
-module uim.http.exceptions;
+module uim.net.http.exceptions;
 
-import uim.cake.core.exceptions.UIMException;
+import uim.net.core.exceptions.UIMException;
 
 /**
  * Missing Controller exception - used when a controller

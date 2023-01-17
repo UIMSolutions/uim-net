@@ -1,7 +1,7 @@
-module uim.http.clients\Exception;
+module uim.net.http.clients\Exception;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 use Psr\Http\Client\NetworkExceptionInterface;
 use Psr\Http\messages.RequestInterface;

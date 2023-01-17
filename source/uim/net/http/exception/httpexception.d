@@ -1,14 +1,14 @@
-module uim.http.exceptions;
+module uim.net.http.exceptions;
 
-import uim.cake.core.exceptions.UIMException;
+import uim.net.core.exceptions.UIMException;
 
 /**
  * Parent class for all the HTTP related exceptions in UIM.
  * All HTTP status/error related exceptions should extend this class so
  * catch blocks can be specifically typed.
  *
- * You may also use this as a meaningful bridge to {@link uim.cake.Core\exceptions.UIMException}, e.g.:
- * throw new uim.cake.Network\exceptions.HttpException("HTTP Version Not Supported", 505);
+ * You may also use this as a meaningful bridge to {@link uim.net.Core\exceptions.UIMException}, e.g.:
+ * throw new uim.net.Network\exceptions.HttpException("HTTP Version Not Supported", 505);
  */
 class HttpException : UIMException {
 

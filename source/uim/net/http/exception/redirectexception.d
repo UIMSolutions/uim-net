@@ -5,7 +5,7 @@
 
 
  * @since         4.1.0
-  */module uim.http.exceptions;
+  */module uim.net.http.exceptions;
 
 /**
  * An exception subclass used by routing and application code to

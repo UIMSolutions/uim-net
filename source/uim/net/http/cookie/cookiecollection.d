@@ -7,7 +7,7 @@
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
-module uim.http.Cookie;
+module uim.net.http.Cookie;
 
 use ArrayIterator;
 use Countable;
@@ -33,14 +33,14 @@ class CookieCollection : IteratorAggregate, Countable
     /**
      * Cookie objects
      *
-     * @var array<uim.http\Cookie\CookieInterface>
+     * @var array<uim.net.http\Cookie\CookieInterface>
      */
     protected $cookies = null;
 
     /**
      * Constructor
      *
-     * @param array<uim.http\Cookie\CookieInterface> $cookies Array of cookie objects
+     * @param array<uim.net.http\Cookie\CookieInterface> $cookies Array of cookie objects
      */
     this(array $cookies = null) {
         this.checkCookies($cookies);
@@ -99,7 +99,7 @@ class CookieCollection : IteratorAggregate, Countable
      * cookies if a cookie collection is used for cookies across multiple
      * domains. This can impact how get(), has() and remove() behave.
      *
-     * @param uim.http.Cookie\CookieInterface $cookie Cookie instance to add.
+     * @param uim.net.http.Cookie\CookieInterface $cookie Cookie instance to add.
      * @return static
      */
     function add(CookieInterface $cookie) {
@@ -113,7 +113,7 @@ class CookieCollection : IteratorAggregate, Countable
      * Get the first cookie by name.
      *
      * @param string aName The name of the cookie.
-     * @return uim.http.Cookie\CookieInterface
+     * @return uim.net.http.Cookie\CookieInterface
      * @throws \InvalidArgumentException If cookie not found.
      */
     function get(string aName): CookieInterface
@@ -173,7 +173,7 @@ class CookieCollection : IteratorAggregate, Countable
     /**
      * Checks if only valid cookie objects are in the array
      *
-     * @param array<uim.http\Cookie\CookieInterface> $cookies Array of cookie objects
+     * @param array<uim.net.http\Cookie\CookieInterface> $cookies Array of cookie objects
      * @return void
      * @throws \InvalidArgumentException
      */
@@ -195,7 +195,7 @@ class CookieCollection : IteratorAggregate, Countable
     /**
      * Gets the iterator
      *
-     * @return \Traversable<string, uim.http\Cookie\CookieInterface>
+     * @return \Traversable<string, uim.net.http\Cookie\CookieInterface>
      */
     function getIterator(): Traversable
     {

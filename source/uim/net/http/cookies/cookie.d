@@ -1,7 +1,7 @@
-module uim.http.cookies.cookie;
+module uim.net.http.cookies.cookie;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 /**
  * Cookie object to build a cookie and turn it into a header value
@@ -26,8 +26,8 @@ import uim.cake;
  *
  * @link https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03
  * @link https://en.wikipedia.org/wiki/HTTP_cookie
- * @see uim.http.Cookie\CookieCollection for working with collections of cookies.
- * @see uim.http.Response::getCookieCollection() for working with response cookies.
+ * @see uim.net.http.Cookie\CookieCollection for working with collections of cookies.
+ * @see uim.net.http.Response::getCookieCollection() for working with response cookies.
  */
 class Cookie : ICookie
 {
@@ -92,7 +92,7 @@ class Cookie : ICookie
      * Default attributes for a cookie.
      *
      * @var array<string, mixed>
-     * @see uim.http.Cookie\Cookie::setDefaults()
+     * @see uim.net.http.Cookie\Cookie::setDefaults()
      */
     protected static $defaults = [
         "expires":null,
@@ -187,7 +187,7 @@ class Cookie : ICookie
      * @param array|string myValue Value of the cookie
      * @param array<string, mixed> myOptions Cookies options.
      * @return static
-     * @see uim.cake.Cookie\Cookie::setDefaults()
+     * @see uim.net.Cookie\Cookie::setDefaults()
      */
     static function create(string myName, myValue, array myOptions = null) {
         myOptions += static::$defaults;
@@ -246,7 +246,7 @@ class Cookie : ICookie
      * @param string cookie Cookie header string.
      * @param array<string, mixed> $defaults Default attributes.
      * @return static
-     * @see uim.http.Cookie\Cookie::setDefaults()
+     * @see uim.net.http.Cookie\Cookie::setDefaults()
      */
     static function createFromHeaderString(string cookie, array $defaults = null) {
         if (indexOf($cookie, "";"") != false) {

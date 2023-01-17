@@ -7,7 +7,7 @@
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
-module uim.http.Cookie;
+module uim.net.http.Cookie;
 
 /**
  * Cookie Interface
