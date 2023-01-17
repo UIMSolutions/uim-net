@@ -5,7 +5,7 @@
 
 
  * @since         3.3.4
-  */module uim.http;
+  */module uim.net.http;
 
 use Laminas\Diactoros\CallbackStream as BaseCallbackStream;
 

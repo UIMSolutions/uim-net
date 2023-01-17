@@ -3,7 +3,7 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.https;
+module uim.net.https;
 
 use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
@@ -20,7 +20,7 @@ interface IControllerFactory
      *
      * @param \Psr\Http\messages.IServerRequest myRequest The request to build a controller for.
      * @return mixed
-     * @throws uim.http.exceptions.MissingControllerException
+     * @throws uim.net.http.exceptions.MissingControllerException
      * @psalm-return TController
      */
     function create(IServerRequest myRequest);

@@ -1,5 +1,5 @@
 
-module uim.http;
+module uim.net.http;
 
 use Psr\Http\messages.RequestInterface;
 

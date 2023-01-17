@@ -3,7 +3,7 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.http.clients.adapters;
+module uim.net.http.clients.adapters;
 
 use Closure;
 use InvalidArgumentException;
@@ -17,7 +17,7 @@ use Psr\Http\messages.RequestInterface;
  *
  * @internal
  */
-class Mock : AdapterInterface
+class Mock : IAdapter
 {
     /**
      * List of mocked responses.
@@ -34,7 +34,7 @@ class Mock : AdapterInterface
      * - `match` An additional closure to match requests with.
      *
      * @param \Psr\Http\messages.RequestInterface $request A partial request to use for matching.
-     * @param uim.http.Client\Response $response The response that matches the request.
+     * @param uim.net.http.Client\Response $response The response that matches the request.
      * @param array<string, mixed> $options See above.
      */
     void addResponse(RequestInterface $request, Response $response, STRINGAA someOptions) {

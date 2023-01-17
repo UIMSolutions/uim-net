@@ -1,7 +1,7 @@
 module uim.baklava.http.clients.response;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 /**
  * : methods for HTTP responses.
@@ -268,7 +268,7 @@ class Response : Message : IResponse
      * This method exposes the response"s CookieCollection
      * instance allowing you to interact with cookie objects directly.
      *
-     * @return uim.http.Cookie\CookieCollection
+     * @return uim.net.http.Cookie\CookieCollection
      */
     CookieCollection getCookieCollection() {
         this.buildCookieCollection();
@@ -328,7 +328,7 @@ class Response : Message : IResponse
         this.buildCookieCollection();
 
         $out = null;
-        /** @var array<uim.http\Cookie\Cookie> $cookies */
+        /** @var array<uim.net.http\Cookie\Cookie> $cookies */
         $cookies = this.cookies;
         foreach ($cookies as $cookie) {
             $out[$cookie.getName()] = $cookie.toArray();

@@ -5,14 +5,14 @@
 
 
  * @since         3.3.0
-  */module uim.http;
+  */module uim.net.http;
 
-import uim.cake.core.IHttpApplication;
-import uim.cake.core.IPluginApplication;
-import uim.cake.events.IEventDispatcher;
-import uim.cake.events.EventDispatcherTrait;
-import uim.cake.events.EventManager;
-import uim.cake.events.IEventManager;
+import uim.net.core.IHttpApplication;
+import uim.net.core.IPluginApplication;
+import uim.net.events.IEventDispatcher;
+import uim.net.events.EventDispatcherTrait;
+import uim.net.events.EventManager;
+import uim.net.events.IEventManager;
 use InvalidArgumentException;
 use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 use Psr\Http\messages.IResponse;
@@ -38,8 +38,8 @@ class Server : IEventDispatcher
     /**
      * Constructor
      *
-     * @param uim.cake.Core\IHttpApplication $app The application to use.
-     * @param uim.http.Runner|null $runner Application runner.
+     * @param uim.net.Core\IHttpApplication $app The application to use.
+     * @param uim.net.http.Runner|null $runner Application runner.
      */
     this(IHttpApplication $app, ?Runner $runner = null) {
         this.app = $app;
@@ -58,7 +58,7 @@ class Server : IEventDispatcher
      * - Run the middleware queue including the application.
      *
      * @param \Psr\Http\messages.IServerRequest|null $request The request to use or null.
-     * @param uim.http.MiddlewareQueue|null $middlewareQueue MiddlewareQueue or null.
+     * @param uim.net.http.MiddlewareQueue|null $middlewareQueue MiddlewareQueue or null.
      * @return \Psr\Http\messages.IResponse
      * @throws \RuntimeException When the application does not make a response.
      */
@@ -116,7 +116,7 @@ class Server : IEventDispatcher
     /**
      * Get the current application.
      *
-     * @return uim.cake.Core\IHttpApplication The application that will be run.
+     * @return uim.net.Core\IHttpApplication The application that will be run.
      */
     function getApp(): IHttpApplication
     {
@@ -126,7 +126,7 @@ class Server : IEventDispatcher
     /**
      * Get the application"s event manager or the global one.
      *
-     * @return uim.cake.events.IEventManager
+     * @return uim.net.events.IEventManager
      */
     function getEventManager(): IEventManager
     {
@@ -142,7 +142,7 @@ class Server : IEventDispatcher
      *
      * If the application does not support events, an exception will be raised.
      *
-     * @param uim.cake.events.IEventManager $eventManager The event manager to set.
+     * @param uim.net.events.IEventManager $eventManager The event manager to set.
      * @return this
      * @throws \InvalidArgumentException
      */

@@ -1,7 +1,7 @@
-module uim.http.clients.request;
+module uim.net.http.clients.request;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 /**
  * : methods for HTTP requests.
@@ -61,7 +61,7 @@ class Request : Message : IRequest {
     /**
      * Set the body/payload for the message.
      *
-     * Array data will be serialized with {@link uim.http\FormData},
+     * Array data will be serialized with {@link uim.net.http\FormData},
      * and the content-type will be set.
      *
      * @param array|string myContents The body for the request.

@@ -3,7 +3,7 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.http.Client;
+module uim.net.http.Client;
 
 use Laminas\Diactoros\RequestTrait;
 use Laminas\Diactoros\Stream;
@@ -63,7 +63,7 @@ class Request : Message : RequestInterface
     /**
      * Set the body/payload for the message.
      *
-     * Array data will be serialized with {@link uim.http\FormData},
+     * Array data will be serialized with {@link uim.net.http\FormData},
      * and the content-type will be set.
      *
      * @param array|string $content The body for the request.

@@ -3,9 +3,9 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.http;
+module uim.net.http;
 
-import uim.http.Cookie\Cookie;
+import uim.net.http.Cookie\Cookie;
 use Laminas\Diactoros\RelativeStream;
 use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 use Psr\Http\messages.IResponse;
@@ -181,7 +181,7 @@ class ResponseEmitter : EmitterInterface
     /**
      * Emit cookies using setcookie()
      *
-     * @param array<uim.http\Cookie\CookieInterface|string> $cookies An array of cookies.
+     * @param array<uim.net.http\Cookie\CookieInterface|string> $cookies An array of cookies.
      */
     protected void emitCookies(array $cookies) {
         foreach ($cookies as $cookie) {
@@ -192,7 +192,7 @@ class ResponseEmitter : EmitterInterface
     /**
      * Helper methods to set cookie.
      *
-     * @param uim.http.Cookie\CookieInterface|string $cookie Cookie.
+     * @param uim.net.http.Cookie\CookieInterface|string $cookie Cookie.
      */
     protected bool setCookie($cookie) {
         if (is_string($cookie)) {

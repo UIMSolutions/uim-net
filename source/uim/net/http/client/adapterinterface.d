@@ -3,21 +3,21 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.http.Client;
+module uim.net.http.Client;
 
 use Psr\Http\messages.RequestInterface;
 
 /**
  * Http client adapter interface.
  */
-interface AdapterInterface
+interface IAdapter
 {
     /**
      * Send a request and get a response back.
      *
      * @param \Psr\Http\messages.RequestInterface $request The request object to send.
      * @param array<string, mixed> $options Array of options for the stream.
-     * @return array<uim.http\Client\Response> Array of populated Response objects
+     * @return array<uim.net.http\Client\Response> Array of populated Response objects
      */
     array send(RequestInterface $request, STRINGAA someOptions);
 }

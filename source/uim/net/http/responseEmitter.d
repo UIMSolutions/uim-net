@@ -3,10 +3,10 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.https;
+module uim.net.https;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 /**
  * Emits a Response to the PHP Server API.
@@ -181,7 +181,7 @@ class ResponseEmitter : EmitterInterface
     /**
      * Emit cookies using setcookie()
      *
-     * @param array<uim.http\Cookie\ICookie|string> $cookies An array of cookies.
+     * @param array<uim.net.http\Cookie\ICookie|string> $cookies An array of cookies.
      */
     protected void emitCookies(array $cookies) {
         foreach ($cookies as $cookie) {
@@ -192,7 +192,7 @@ class ResponseEmitter : EmitterInterface
     /**
      * Helper methods to set cookie.
      *
-     * @param uim.http.Cookie\ICookie|string cookie Cookie.
+     * @param uim.net.http.Cookie\ICookie|string cookie Cookie.
      */
     protected bool setCookie($cookie) {
         if (is_string($cookie)) {

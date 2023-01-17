@@ -5,11 +5,11 @@
 
 
  * @since         3.3.0
-  */module uim.http;
+  */module uim.net.http;
 
-import uim.cake.core.Configure;
-import uim.http.Uri as CakeUri;
-import uim.cake.utilities.Hash;
+import uim.net.core.Configure;
+import uim.net.http.Uri as CakeUri;
+import uim.net.utilities.Hash;
 use Psr\Http\messages.ServerRequestFactoryInterface;
 use Psr\Http\messages.IServerRequest;
 use Psr\Http\messages.UriInterface;
@@ -38,7 +38,7 @@ abstract class ServerRequestFactory : ServerRequestFactoryInterface
      * @param array|null $parsedBody _POST superglobal
      * @param array|null $cookies _COOKIE superglobal
      * @param array|null $files _FILES superglobal
-     * @return uim.http.ServerRequest
+     * @return uim.net.http.ServerRequest
      * @throws \InvalidArgumentException for invalid file values
      */
     static function fromGlobals(
@@ -100,8 +100,8 @@ abstract class ServerRequestFactory : ServerRequestFactoryInterface
      * into array for PUT/PATCH/DELETE requests.
      *
      * @param array $parsedBody Parsed body.
-     * @param uim.http.ServerRequest myServerRequest Request instance.
-     * @return uim.http.ServerRequest
+     * @param uim.net.http.ServerRequest myServerRequest Request instance.
+     * @return uim.net.http.ServerRequest
      */
     protected static function marshalBodyAndRequestMethod(array $parsedBody, ServerRequest myServerRequest): ServerRequest
     {
@@ -141,8 +141,8 @@ abstract class ServerRequestFactory : ServerRequestFactoryInterface
      * Process uploaded files and move things onto the parsed body.
      *
      * @param array $files Files array for normalization and merging in parsed body.
-     * @param uim.http.ServerRequest myServerRequest Request instance.
-     * @return uim.http.ServerRequest
+     * @param uim.net.http.ServerRequest myServerRequest Request instance.
+     * @return uim.net.http.ServerRequest
      */
     protected static function marshalFiles(array $files, ServerRequest myServerRequest): ServerRequest
     {
@@ -231,7 +231,7 @@ abstract class ServerRequestFactory : ServerRequestFactoryInterface
      *
      * @param array $server The server parameters.
      * @param array $headers The normalized headers
-     * @return uim.http.Uri A constructed Uri
+     * @return uim.net.http.Uri A constructed Uri
      */
     protected static function marshalUriFromSapi(array $server, array $headers): UriInterface
     {

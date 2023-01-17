@@ -6,22 +6,22 @@
 
  * @since         3.3.0
   */
-module uim.http;
+module uim.net.http;
 
-import uim.cake.consoles.CommandCollection;
-import uim.cake.controllers.ControllerFactory;
-import uim.cake.core.IConsoleApplication;
-import uim.cake.core.Container;
-import uim.cake.core.IContainerApplication;
-import uim.cake.core.IContainer;
-import uim.cake.core.exceptions.MissingPluginException;
-import uim.cake.core.IHttpApplication;
-import uim.cake.core.Plugin;
-import uim.cake.core.IPluginApplication;
-import uim.cake.core.PluginCollection;
-import uim.cake.events.EventDispatcherTrait;
-import uim.cake.events.EventManager;
-import uim.cake.events.IEventManager;
-import uim.cake.routings.RouteBuilder;
-import uim.cake.routings.Router;
-import uim.cake.routings.IRoutingApplication;
+import uim.net.consoles.CommandCollection;
+import uim.net.controllers.ControllerFactory;
+import uim.net.core.IConsoleApplication;
+import uim.net.core.Container;
+import uim.net.core.IContainerApplication;
+import uim.net.core.IContainer;
+import uim.net.core.exceptions.MissingPluginException;
+import uim.net.core.IHttpApplication;
+import uim.net.core.Plugin;
+import uim.net.core.IPluginApplication;
+import uim.net.core.PluginCollection;
+import uim.net.events.EventDispatcherTrait;
+import uim.net.events.EventManager;
+import uim.net.events.IEventManager;
+import uim.net.routings.RouteBuilder;
+import uim.net.routings.Router;
+import uim.net.routings.IRoutingApplication;

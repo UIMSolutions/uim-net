@@ -1,4 +1,4 @@
-module uim.http;
+module uim.net.http;
 
 use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
@@ -15,7 +15,7 @@ interface ControllerFactoryInterface
      *
      * @param \Psr\Http\messages.IServerRequest $request The request to build a controller for.
      * @return mixed
-     * @throws uim.http.exceptions.MissingControllerException
+     * @throws uim.net.http.exceptions.MissingControllerException
      * @psalm-return TController
      */
     function create(IServerRequest $request);

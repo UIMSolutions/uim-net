@@ -1,4 +1,4 @@
-module uim.http.clients;
+module uim.net.http.clients;
 
 /**
  * Base class for other HTTP requests/responses

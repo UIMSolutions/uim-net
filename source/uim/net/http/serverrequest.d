@@ -1,11 +1,11 @@
-module uim.http;
+module uim.net.http;
 
 use BadMethodCallException;
-import uim.cake.core.Configure;
-import uim.cake.core.exceptions.UIMException;
-import uim.http.Cookie\CookieCollection;
-import uim.http.exceptions.MethodNotAllowedException;
-import uim.cake.utilities.Hash;
+import uim.net.core.Configure;
+import uim.net.core.exceptions.UIMException;
+import uim.net.http.Cookie\CookieCollection;
+import uim.net.http.exceptions.MethodNotAllowedException;
+import uim.net.utilities.Hash;
 use InvalidArgumentException;
 use Laminas\Diactoros\PhpInputStream;
 use Laminas\Diactoros\Stream;
@@ -93,7 +93,7 @@ class ServerRequest : IServerRequest
     /**
      * The built in detectors used with `is()` can be modified with `addDetector()`.
      *
-     * There are several ways to specify a detector, see uim.http\ServerRequest::addDetector() for the
+     * There are several ways to specify a detector, see uim.net.http\ServerRequest::addDetector() for the
      * various formats and ways to define detectors.
      *
      * @var array<callable|array>
@@ -319,7 +319,7 @@ class ServerRequest : IServerRequest
     /**
      * Returns the instance of the Session object for this request
      *
-     * @return uim.http.Session
+     * @return uim.net.http.Session
      */
     function getSession(): Session
     {
@@ -329,7 +329,7 @@ class ServerRequest : IServerRequest
     /**
      * Returns the instance of the FlashMessage object for this request
      *
-     * @return uim.http.FlashMessage
+     * @return uim.net.http.FlashMessage
      */
     function getFlash(): FlashMessage
     {
@@ -444,7 +444,7 @@ class ServerRequest : IServerRequest
      * Check whether a Request is a certain type.
      *
      * Uses the built-in detection rules as well as additional rules
-     * defined with {@link uim.http\ServerRequest::addDetector()}. Any detector can be called
+     * defined with {@link uim.net.http\ServerRequest::addDetector()}. Any detector can be called
      * as `is($type)` or `is$Type()`.
      *
      * @param array<string>|string $type The type of request you want to check. If an array
@@ -614,7 +614,7 @@ class ServerRequest : IServerRequest
      *
      * @param array<string> $types The types to check.
      * @return bool Success.
-     * @see uim.http.ServerRequest::is()
+     * @see uim.net.http.ServerRequest::is()
      */
     bool isAll(array $types) {
         foreach ($types as $type) {
@@ -1060,7 +1060,7 @@ class ServerRequest : IServerRequest
      * Parse the HTTP_ACCEPT header and return a sorted array with content types
      * as the keys, and pref values as the values.
      *
-     * Generally you want to use {@link uim.http\ServerRequest::accepts()} to get a simple list
+     * Generally you want to use {@link uim.net.http\ServerRequest::accepts()} to get a simple list
      * of the accepted content types.
      *
      * @return array An array of `prefValue: [content/types]`
@@ -1221,7 +1221,7 @@ class ServerRequest : IServerRequest
      * Get a cookie collection based on the request"s cookies
      *
      * The CookieCollection lets you interact with request cookies using
-     * `uim.http\Cookie\Cookie` objects and can make converting request cookies
+     * `uim.net.http\Cookie\Cookie` objects and can make converting request cookies
      * into response cookies easier.
      *
      * This method will create a new cookie collection each time it is called.
@@ -1230,7 +1230,7 @@ class ServerRequest : IServerRequest
      * `getCookie()` and `getCookieParams()` over this method. Using a CookieCollection
      * is ideal if your cookies contain complex JSON encoded data.
      *
-     * @return uim.http.Cookie\CookieCollection
+     * @return uim.net.http.Cookie\CookieCollection
      */
     function getCookieCollection(): CookieCollection
     {
@@ -1241,7 +1241,7 @@ class ServerRequest : IServerRequest
      * Replace the cookies in the request with those contained in
      * the provided CookieCollection.
      *
-     * @param uim.http.Cookie\CookieCollection $cookies The cookie collection
+     * @param uim.net.http.Cookie\CookieCollection $cookies The cookie collection
      * @return static
      */
     function withCookieCollection(CookieCollection $cookies) {
@@ -1397,7 +1397,7 @@ class ServerRequest : IServerRequest
      *
      * @param array<string>|string $methods Allowed HTTP request methods.
      * @return true
-     * @throws uim.http.exceptions.MethodNotAllowedException
+     * @throws uim.net.http.exceptions.MethodNotAllowedException
      */
     bool allowMethod($methods) {
         $methods = (array)$methods;

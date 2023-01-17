@@ -5,7 +5,7 @@
 
 
  * @since         3.3.0
-  */module uim.http;
+  */module uim.net.http;
 
 use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
@@ -32,7 +32,7 @@ class Runner : RequestHandlerInterface
     protected $fallbackHandler;
 
     /**
-     * @param uim.http.MiddlewareQueue $queue The middleware queue
+     * @param uim.net.http.MiddlewareQueue $queue The middleware queue
      * @param \Psr\Http\messages.IServerRequest $request The Server Request
      * @param \Psr\Http\servers.RequestHandlerInterface|null $fallbackHandler Fallback request handler.
      * @return \Psr\Http\messages.IResponse A response object

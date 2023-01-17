@@ -1,12 +1,12 @@
-module uim.http.clients\Auth;
+module uim.net.http.clients\Auth;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 /**
  * Basic authentication adapter for Cake\Http\Client
  *
- * Generally not directly constructed, but instead used by {@link uim.http\Client}
+ * Generally not directly constructed, but instead used by {@link uim.net.http\Client}
  * when $options["auth"]["type"] is "basic"
  */
 class Basic
@@ -14,7 +14,7 @@ class Basic
     /**
      * Add Authorization header to the request.
      *
-     * @param uim.http.Client\Request $request Request instance.
+     * @param uim.net.http.Client\Request $request Request instance.
      * @param array $credentials Credentials.
      * returns DHTPRequest The updated request.
      * @see https://www.ietf.org/rfc/rfc2617.txt
@@ -33,7 +33,7 @@ class Basic
     /**
      * Proxy Authentication
      *
-     * @param uim.http.Client\Request $request Request instance.
+     * @param uim.net.http.Client\Request $request Request instance.
      * @param array $credentials Credentials.
      * returns DHTPRequest The updated request.
      * @see https://www.ietf.org/rfc/rfc2617.txt

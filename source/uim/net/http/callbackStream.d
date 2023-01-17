@@ -1,7 +1,7 @@
-module uim.https;
+module uim.net.https;
 
 @safe:
-import uim.cake;
+import uim.net;
 /**
  * Implementation of PSR HTTP streams.
  *

@@ -3,10 +3,10 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.http.clients.adapters;
+module uim.net.http.clients.adapters;
 
 @safe:
-import uim.cake;
+import uim.net;
 
 use Composer\CaBundle\CaBundle;
 use Psr\Http\messages.RequestInterface;
@@ -14,12 +14,12 @@ use Psr\Http\messages.RequestInterface;
 /**
  * : sending Cake\Http\Client\Request via ext/curl.
  *
- * In addition to the standard options documented in {@link uim.http\Client},
+ * In addition to the standard options documented in {@link uim.net.http\Client},
  * this adapter supports all available curl options. Additional curl options
  * can be set via the `curl` option key when making requests or configuring
  * a client.
  */
-class Curl : AdapterInterface
+class Curl : IAdapter
 {
 
     array send(RequestInterface $request, STRINGAA someOptions) {
@@ -172,7 +172,7 @@ class Curl : AdapterInterface
      *
      * @param resource|\CurlHandle $handle Curl handle
      * @param string $responseData string The response data from curl_exec
-     * @return array<uim.http\Client\Response>
+     * @return array<uim.net.http\Client\Response>
      * @psalm-suppress UndefinedDocblockClass
      */
     protected array createResponse($handle, $responseData) {

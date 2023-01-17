@@ -3,7 +3,7 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.http.Client;
+module uim.net.http.Client;
 
 use Countable;
 use finfo;
@@ -36,7 +36,7 @@ class FormData : Countable
     /**
      * The parts in the form data.
      *
-     * @var array<uim.http\Client\FormDataPart>
+     * @var array<uim.net.http\Client\FormDataPart>
      */
     protected _parts = null;
 
@@ -73,7 +73,7 @@ class FormData : Countable
      * If the $value is an array, multiple parts will be added.
      * Files will be read from their current position and saved in memory.
      *
-     * @param uim.http.Client\FormDataPart|string aName The name of the part to add,
+     * @param uim.net.http.Client\FormDataPart|string aName The name of the part to add,
      *   or the part data object.
      * @param mixed $value The value for the part.
      * @return this

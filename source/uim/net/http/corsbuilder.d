@@ -3,7 +3,7 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.http;
+module uim.net.http;
 
 use Psr\Http\messages.MessageInterface;
 
@@ -17,7 +17,7 @@ use Psr\Http\messages.MessageInterface;
  *
  * It is most convenient to get this object via `Request::cors()`.
  *
- * @see uim.http.Response::cors()
+ * @see uim.net.http.Response::cors()
  */
 class CorsBuilder
 {

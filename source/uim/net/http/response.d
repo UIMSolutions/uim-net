@@ -1,7 +1,7 @@
-vuim.http;
+vuim.net.http;
 
 @safe:
-import uim.cake; 
+import uim.net; 
 
 use DateTime;
 use DateTimeInterface;
@@ -1127,7 +1127,7 @@ class Response : IResponse
      * You need to set at least one of the `Last-Modified` or `Etag` response headers
      * before calling this method. Otherwise, a comparison will not be possible.
      *
-     * @param uim.http.ServerRequest myServerRequest Request object
+     * @param uim.net.http.ServerRequest myServerRequest Request object
      * @return bool Whether the response is "modified" based on cache headers.
      */
     bool isNotModified(ServerRequest myServerRequest) {
@@ -1162,7 +1162,7 @@ class Response : IResponse
      *
      * *Warning* This method mutates the response in-place and should be avoided.
      *
-     * @param uim.http.ServerRequest myServerRequest Request object
+     * @param uim.net.http.ServerRequest myServerRequest Request object
      * @return bool Whether the response was marked as not modified or not.
      * @deprecated 4.4.0 Use `isNotModified()` and `withNotModified()` instead.
      */
@@ -1201,7 +1201,7 @@ class Response : IResponse
      * $response = $response.withCookie(new Cookie("remember_me", 1));
      * ```
      *
-     * @param uim.http.Cookie\CookieInterface $cookie cookie object
+     * @param uim.net.http.Cookie\CookieInterface $cookie cookie object
      * @return static
      */
     function withCookie(CookieInterface $cookie) {
@@ -1221,7 +1221,7 @@ class Response : IResponse
      * $response = $response.withExpiredCookie(new Cookie("remember_me"));
      * ```
      *
-     * @param uim.http.Cookie\CookieInterface $cookie cookie object
+     * @param uim.net.http.Cookie\CookieInterface $cookie cookie object
      * @return static
      */
     function withExpiredCookie(CookieInterface $cookie) {
@@ -1260,7 +1260,7 @@ class Response : IResponse
      */
     array getCookies() {
         $out = null;
-        /** @var array<uim.http\Cookie\Cookie> $cookies */
+        /** @var array<uim.net.http\Cookie\Cookie> $cookies */
         $cookies = _cookies;
         foreach ($cookies as $cookie) {
             $out[$cookie.getName()] = $cookie.toArray();
@@ -1272,7 +1272,7 @@ class Response : IResponse
     /**
      * Get the CookieCollection from the response
      *
-     * @return uim.http.Cookie\CookieCollection
+     * @return uim.net.http.Cookie\CookieCollection
      */
     function getCookieCollection(): CookieCollection
     {
@@ -1282,7 +1282,7 @@ class Response : IResponse
     /**
      * Get a new instance with provided cookie collection.
      *
-     * @param uim.http.Cookie\CookieCollection $cookieCollection Cookie collection to set.
+     * @param uim.net.http.Cookie\CookieCollection $cookieCollection Cookie collection to set.
      * @return static
      */
     function withCookieCollection(CookieCollection $cookieCollection) {
@@ -1295,8 +1295,8 @@ class Response : IResponse
     /**
      * Get a CorsBuilder instance for defining CORS headers.
      *
-     * @param uim.http.ServerRequest myServerRequest Request object
-     * @return uim.http.CorsBuilder A builder object the provides a fluent interface for defining
+     * @param uim.net.http.ServerRequest myServerRequest Request object
+     * @return uim.net.http.CorsBuilder A builder object the provides a fluent interface for defining
      *   additional CORS headers.
      */
     function cors(ServerRequest myServerRequest): CorsBuilder
@@ -1324,7 +1324,7 @@ class Response : IResponse
      * @param string $path Absolute path to file.
      * @param array<string, mixed> $options Options See above.
      * @return static
-     * @throws uim.http.exceptions.NotFoundException
+     * @throws uim.net.http.exceptions.NotFoundException
      */
     function withFile(string $path, STRINGAA someOptions = null) {
         $file = this.validateFile($path);
@@ -1393,7 +1393,7 @@ class Response : IResponse
      * Validate a file path is a valid response body.
      *
      * @param string $path The path to the file.
-     * @throws uim.http.exceptions.NotFoundException
+     * @throws uim.net.http.exceptions.NotFoundException
      * @return \SplFileInfo
      */
     protected function validateFile(string $path): SplFileInfo
