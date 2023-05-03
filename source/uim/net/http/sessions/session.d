@@ -268,7 +268,7 @@ class Session {
      *
      * @param array<string, mixed> $options Ini options to set.
      * @return void
-     * @throws \RuntimeException if any directive could not be set
+     * @throws \UIMException if any directive could not be set
      */
     void options(STRINGAA someOptions) {
         if (session_status() == \PHP_SESSION_ACTIVE || headers_sent()) {
@@ -277,7 +277,7 @@ class Session {
 
         foreach ($options as $setting: $value) {
             if (ini_set($setting, (string)$value) == false) {
-                throw new RuntimeException(
+                throw new UIMException(
                     sprintf("Unable to configure the session, setting %s failed.", $setting)
                 );
             }
@@ -288,7 +288,7 @@ class Session {
      * Starts the Session.
      *
      * @return bool True if session was started
-     * @throws \RuntimeException if the session was already started
+     * @throws \UIMException if the session was already started
      */
     bool start() {
         if (_started) {
@@ -303,7 +303,7 @@ class Session {
         }
 
         if (session_status() == \PHP_SESSION_ACTIVE) {
-            throw new RuntimeException("Session was already started");
+            throw new UIMException("Session was already started");
         }
 
         if (ini_get("session.use_cookies") && headers_sent()) {
@@ -311,7 +311,7 @@ class Session {
         }
 
         if (!session_start()) {
-            throw new RuntimeException("Could not start the session");
+            throw new UIMException("Could not start the session");
         }
 
         _started = true;
@@ -342,7 +342,7 @@ class Session {
         }
 
         if (!session_write_close()) {
-            throw new RuntimeException("Could not close the session");
+            throw new UIMException("Could not close the session");
         }
 
         _started = false;
@@ -409,12 +409,12 @@ class Session {
      * Returns given session variable, or throws Exception if not found.
      *
      * @param string aName The name of the session variable (or a path as sent to Hash.extract)
-     * @throws \RuntimeException
+     * @throws \UIMException
      * @return mixed|null
      */
     function readOrFail(string aName) {
         if (!this.check($name)) {
-            throw new RuntimeException(sprintf("Expected session key '%s' not found.", $name));
+            throw new UIMException(sprintf("Expected session key '%s' not found.", $name));
         }
 
         return this.read($name);

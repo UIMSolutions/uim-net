@@ -3,19 +3,12 @@ module uim.net.https.middlewares;
 import uim.net;
 @safe:
 
-use InvalidArgumentException;
-use Psr\Http\messages.IResponse;
-use Psr\Http\messages.IServerRequest;
-use Psr\Http\servers.IMiddleware;
-use Psr\Http\servers.RequestHandlerInterface;
-
 /**
  * Handles common security headers in a convenient way
  *
  * @link https://book.cakephp.org/4/en/controllers/middleware.html#security-header-middleware
  */
-class SecurityHeadersMiddleware : IMiddleware
-{
+class SecurityHeadersMiddleware : IMiddleware {
     /** @var string X-Content-Type-Option nosniff */
     const NOSNIFF = "nosniff";
 
