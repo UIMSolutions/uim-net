@@ -1,4 +1,4 @@
-module uim.net.https\Middleware;
+module uim.net.https.middlewares;
 
 @safe:
 import uim.net
@@ -15,8 +15,7 @@ use Psr\Http\servers.RequestHandlerInterface;
  * Enables JSON and XML request payloads to be parsed into the request"s body.
  * You can also add your own request body parsers using the `addParser()` method.
  */
-class BodyParserMiddleware : IMiddleware
-{
+class BodyParserMiddleware : IMiddleware {
     /**
      * Registered Parsers
      *

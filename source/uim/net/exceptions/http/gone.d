@@ -10,20 +10,13 @@ import uim.net;
 
 // Represents an HTTP 410 error.
 class GoneException : HttpException {
+  this(string myMessage = null, int theCode = 0, Throwable nextInChain = null) {
+    super(myMessage, code, nextInChain);
+  }
 
-  protected _defaultCode = 410;
-
-  /**
-    * Constructor
-    *
-    * @param string|null myMessage If no message is given "Gone" will be the message
-    * @param int|null $code Status code, defaults to 410
-    * @param \Throwable|null $previous The previous exception.
-    */
-  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
-    if (empty(myMessage)) {
-        myMessage = "Gone";
-    }
-    super.this(myMessage, $code, $previous);
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(410)
+      .message("Gone");
   }
 }
