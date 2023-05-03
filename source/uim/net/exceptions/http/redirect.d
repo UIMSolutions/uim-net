@@ -1,4 +1,7 @@
-module uim.net.https\Exception;
+module uim.net.exceptions.http.redirect;
+
+import uim.net;
+@safe:
 
 /**
  * An exception subclass used by routing and application code to
