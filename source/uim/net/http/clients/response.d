@@ -123,11 +123,11 @@ class Response : Message : IResponse
      *
      * @param string body Gzip encoded body.
      * @return string
-     * @throws \RuntimeException When attempting to decode gzip content without gzinflate.
+     * @throws \UIMException When attempting to decode gzip content without gzinflate.
      */
     protected string _decodeGzipBody(string body) {
         if (!function_exists("gzinflate")) {
-            throw new RuntimeException("Cannot decompress gzip response body without gzinflate()");
+            throw new UIMException("Cannot decompress gzip response body without gzinflate()");
         }
         $offset = 0;
         // Look for gzip "signature"
@@ -139,7 +139,7 @@ class Response : Message : IResponse
             return gzinflate(substr($body, $offset + 8));
         }
 
-        throw new RuntimeException("Invalid gzip response");
+        throw new UIMException("Invalid gzip response");
     }
 
     /**

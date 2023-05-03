@@ -11,15 +11,15 @@ import uim.net;
  *   - Request is invalid (e.g. method is missing)
  *   - Runtime request errors (e.g. the body stream is not seekable)
  */
-class RequestException : RuntimeException, IRequestException {
+class RequestException : UIMException, IRequestException {
   /**
     * Constructor.
     *
-    * @param string $message Exeception message.
+    * @param string aMessage Exeception message.
     * @param \Psr\Http\messages.IRequest $request Request instance.
     * @param \Throwable|null $previous Previous Exception
     */
-  this(string $message, IRequest $request, ?Throwable $previous = null) {
+  this(string aMessage, IRequest $request, ?Throwable $previous = null) {
     this.request = $request;
     super(message, 0, $previous);
   }

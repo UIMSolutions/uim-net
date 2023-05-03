@@ -4,7 +4,7 @@ import uim.net;
 @safe:
 
 use Psr\Http\messages.UriInterface;
-use RuntimeException;
+use UIMException;
 
 /**
  * Oauth 1 authentication strategy for Cake\Http\Client
@@ -153,11 +153,11 @@ class Oauth
      * @param uim.net.http.Client\Request $request The request object.
      * @param array $credentials Authentication credentials.
      * @return string
-     * @throws \RuntimeException
+     * @throws \UIMException
      */
     protected string _rsaSha1(Request $request, array $credentials) {
         if (!function_exists("openssl_pkey_get_private")) {
-            throw new RuntimeException("RSA-SHA1 signature method requires the OpenSSL extension.");
+            throw new UIMException("RSA-SHA1 signature method requires the OpenSSL extension.");
         }
 
         $nonce = $credentials["nonce"] ?? bin2hex(Security::randomBytes(16));
@@ -353,7 +353,7 @@ class Oauth
         }
 
         if (strlen($error) > 0) {
-            throw new RuntimeException("openssl error: " ~ $error);
+            throw new UIMException("openssl error: " ~ $error);
         }
     }
 }

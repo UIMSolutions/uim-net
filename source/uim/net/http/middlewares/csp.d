@@ -12,7 +12,7 @@ use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
 use Psr\Http\servers.IMiddleware;
 use Psr\Http\servers.RequestHandlerInterface;
-use RuntimeException;
+use UIMException;
 
 /**
  * Content Security Policy Middleware
@@ -48,11 +48,11 @@ class CspMiddleware : IMiddleware
      *
      * @param \ParagonIE\CSPBuilder\CSPBuilder|array $csp CSP object or config array
      * @param array<string, mixed> aConfig Configuration options.
-     * @throws \RuntimeException
+     * @throws \UIMException
      */
     this($csp, Json aConfig = null) {
         if (!class_exists(CSPBuilder::class)) {
-            throw new RuntimeException("You must install paragonie/csp-builder to use CspMiddleware");
+            throw new UIMException("You must install paragonie/csp-builder to use CspMiddleware");
         }
         this.setConfig(aConfig);
 

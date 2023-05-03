@@ -60,7 +60,7 @@ class Server : IEventDispatcher
      * @param \Psr\Http\messages.IServerRequest|null $request The request to use or null.
      * @param uim.net.http.MiddlewareQueue|null $middlewareQueue MiddlewareQueue or null.
      * @return \Psr\Http\messages.IResponse
-     * @throws \RuntimeException When the application does not make a response.
+     * @throws \UIMException When the application does not make a response.
      */
     function run(
         ?IServerRequest $request = null,

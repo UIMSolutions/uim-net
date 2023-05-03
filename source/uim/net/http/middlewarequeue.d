@@ -14,7 +14,7 @@ use LogicException;
 use OutOfBoundsException;
 use Psr\Http\servers.IMiddleware;
 use ReflectionFunction;
-use RuntimeException;
+use UIMException;
 use SeekableIterator;
 
 /**
@@ -51,14 +51,14 @@ class MiddlewareQueue : Countable, SeekableIterator
      *
      * @param \Psr\Http\servers.IMiddleware|\Closure|string $middleware The middleware to resolve.
      * @return \Psr\Http\servers.IMiddleware
-     * @throws \RuntimeException If Middleware not found.
+     * @throws \UIMException If Middleware not found.
      */
     protected function resolve($middleware): IMiddleware
     {
         if (is_string($middleware)) {
             $className = App::className($middleware, "Middleware", "Middleware");
             if ($className == null) {
-                throw new RuntimeException(sprintf(
+                throw new UIMException(sprintf(
                     "Middleware '%s' was not found.",
                     $middleware
                 ));
