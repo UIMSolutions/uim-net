@@ -5,8 +5,8 @@
 **********************************************************************************************************/
 module uim.net.http.clients.adapters;
 
-@safe:
 import uim.net;
+@safe:
 
 use Composer\CaBundle\CaBundle;
 use Psr\Http\messages.RequestInterface;

@@ -4,8 +4,8 @@
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/module uim.net.https\Middleware;
 
-@safe:
 import uim.net;
+@safe:
 
 use ParagonIE\CSPBuilder\CSPBuilder;
 use Psr\Http\messages.IResponse;

@@ -1,7 +1,7 @@
 module uim.net.http.cookies.cookie;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * Cookie object to build a cookie and turn it into a header value

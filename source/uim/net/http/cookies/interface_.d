@@ -1,7 +1,7 @@
 module uim.net.http.cookies.interface_;
 
-@safe:
 import uim.net;
+@safe:
 
 // Cookie Interface
 interface ICookie {

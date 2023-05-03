@@ -1,7 +1,7 @@
 module uim.net.http.cookies.collection;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * Cookie Collection

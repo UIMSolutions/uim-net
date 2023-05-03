@@ -1,7 +1,7 @@
 module uim.net.http.clients\Auth;
 
-@safe:
 import uim.net;
+@safe:
 
 use Psr\Http\messages.UriInterface;
 use RuntimeException;

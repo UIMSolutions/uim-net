@@ -1,7 +1,7 @@
 module uim.net.https\Middleware;
 
-@safe:
 import uim.net;
+@safe:
 
 use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;

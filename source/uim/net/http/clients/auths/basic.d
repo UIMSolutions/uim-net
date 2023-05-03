@@ -1,7 +1,7 @@
 module uim.net.http.clients\Auth;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * Basic authentication adapter for Cake\Http\Client

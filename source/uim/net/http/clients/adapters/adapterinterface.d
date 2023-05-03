@@ -5,8 +5,8 @@
 **********************************************************************************************************/
 module uim.net.http.clients;
 
-@safe:
 import uim.net;
+@safe:
 
 // Http client adapter interface.
 interface IAdapter {

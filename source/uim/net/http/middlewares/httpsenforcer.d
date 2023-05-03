@@ -4,8 +4,8 @@
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/module uim.net.https\Middleware;
 
-@safe:
 import uim.net;
+@safe:
 
 use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\messages.IResponse;

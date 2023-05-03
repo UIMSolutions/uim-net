@@ -1,7 +1,7 @@
 module uim.net.sockets;
 
-@safe:
 import uim.net;
+@safe:
 
 class DSocket {
   this() {
