@@ -2,26 +2,27 @@
 	Copyright: © 2015-2023 Ozan Nurettin Süel (Sicherheitsschmiede)                                        
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
-**********************************************************************************************************/module uim.net.http.exceptions;
+**********************************************************************************************************/module uim.net.https\Exception;
 
-@safe:
-import uim.net;
+use Throwable;
 
-// Represents an HTTP 410 error.
-class GoneException : HttpException {
+/**
+ * Represents an HTTP 503 error.
+ */
+class ServiceUnavailableException : HttpException {
 
-    protected _defaultCode = 410;
+    protected _defaultCode = 503;
 
     /**
      * Constructor
      *
-     * @param string|null myMessage If no message is given "Gone" will be the message
-     * @param int|null $code Status code, defaults to 410
+     * @param string|null myMessage If no message is given "Service Unavailable" will be the message
+     * @param int|null $code Status code, defaults to 503
      * @param \Throwable|null $previous The previous exception.
      */
     this(Nullable!string myMessage = null, Nullable!int $code = null, ?Throwable $previous = null) {
         if (empty(myMessage)) {
-            myMessage = "Gone";
+            myMessage = "Service Unavailable";
         }
         super.this(myMessage, $code, $previous);
     }
