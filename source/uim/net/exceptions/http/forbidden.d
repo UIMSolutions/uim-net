@@ -20,7 +20,7 @@ class ForbiddenException : HttpException {
     * @param int|null $code Status code, defaults to 403
     * @param \Throwable|null $previous The previous exception.
     */
-  this(Nullable!string myMessage = null, Nullable!int $code = null, ?Throwable $previous = null) {
+  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
     if (empty(myMessage)) {
         myMessage = "Forbidden";
     }
