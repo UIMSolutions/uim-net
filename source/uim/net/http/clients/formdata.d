@@ -1,7 +1,7 @@
 module uim.net.http.clients;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * Provides an interface for building

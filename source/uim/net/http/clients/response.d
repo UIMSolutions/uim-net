@@ -1,7 +1,7 @@
 module uim.baklava.http.clients.response;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * : methods for HTTP responses.

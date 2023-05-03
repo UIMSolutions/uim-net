@@ -1,7 +1,7 @@
 module uim.net.https;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * Factory for making ServerRequest instances.

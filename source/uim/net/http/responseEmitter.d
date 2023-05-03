@@ -5,8 +5,8 @@
 **********************************************************************************************************/
 module uim.net.https;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * Emits a Response to the PHP Server API.

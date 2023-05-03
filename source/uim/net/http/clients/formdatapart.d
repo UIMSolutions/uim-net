@@ -4,8 +4,8 @@
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/module uim.net.http.clients.formdatapart;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * Contains the data and behavior for a single

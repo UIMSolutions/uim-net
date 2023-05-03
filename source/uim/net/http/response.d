@@ -1,7 +1,7 @@
 vuim.net.http;
 
-@safe:
-import uim.net; 
+import uim.net;
+@safe: 
 
 use DateTime;
 use DateTimeInterface;

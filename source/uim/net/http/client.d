@@ -1,7 +1,7 @@
 module uim.net.https;
 
-@safe:
 import uim.net;
+@safe:
 
 /**
  * The end user interface for doing HTTP requests.

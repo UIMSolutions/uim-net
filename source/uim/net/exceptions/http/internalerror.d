@@ -4,8 +4,8 @@
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/module uim.net.http.exceptions;
 
-@safe:
 import uim.net;
+@safe:
 
 // Represents an HTTP 500 error.
 class InternalErrorException : HttpException {
