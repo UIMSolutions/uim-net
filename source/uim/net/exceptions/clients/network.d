@@ -12,7 +12,7 @@ import uim.net;
  */
 class NetworkException : RuntimeException, INetworkException {
     /**
-     * @var \Psr\Http\messages.RequestInterface
+     * @var \Psr\Http\messages.IRequest
      */
     protected $request;
 
@@ -20,10 +20,10 @@ class NetworkException : RuntimeException, INetworkException {
      * Constructor.
      *
      * @param string $message Exeception message.
-     * @param \Psr\Http\messages.RequestInterface $request Request instance.
+     * @param \Psr\Http\messages.IRequest $request Request instance.
      * @param \Throwable|null $previous Previous Exception
      */
-    this(string $message, RequestInterface $request, ?Throwable $previous = null) {
+    this(string $message, IRequest $request, ?Throwable $previous = null) {
         this.request = $request;
         super(($message, 0, $previous);
     }
@@ -33,7 +33,7 @@ class NetworkException : RuntimeException, INetworkException {
      *
      * The request object MAY be a different object from the one passed to ClientInterface::sendRequest()
      *
-     * @return \Psr\Http\messages.RequestInterface
+     * @return \Psr\Http\messages.IRequest
      */
     IRequest getRequest():  {
         return this.request;

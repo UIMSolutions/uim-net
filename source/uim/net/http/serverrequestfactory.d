@@ -1,22 +1,12 @@
+/*********************************************************************************************************
+	Copyright: © 2015-2023 Ozan Nurettin Süel (Sicherheitsschmiede)                                        
+	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
+	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
+**********************************************************************************************************/
+module uim.net.http.serverrequestfactory;
 
-
-
- *
-
-
- * @since         3.3.0
-  */module uim.net.http;
-
-import uim.net.core.Configure;
-import uim.net.http.Uri as CakeUri;
-import uim.net.utilities.Hash;
-use Psr\Http\messages.ServerRequestFactoryInterface;
-use Psr\Http\messages.IServerRequest;
-use Psr\Http\messages.UriInterface;
-use function Laminas\Diactoros\marshalHeadersFromSapi;
-use function Laminas\Diactoros\marshalUriFromSapi;
-use function Laminas\Diactoros\normalizeServer;
-use function Laminas\Diactoros\normalizeUploadedFiles;
+import uim.net;
+@safe:
 
 /**
  * Factory for making ServerRequest instances.

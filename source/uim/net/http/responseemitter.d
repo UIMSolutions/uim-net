@@ -3,12 +3,10 @@
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
 **********************************************************************************************************/
-module uim.net.http;
+module uim.net.http.responseemitter;
 
-import uim.net.http.Cookie\Cookie;
-use Laminas\Diactoros\RelativeStream;
-use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
-use Psr\Http\messages.IResponse;
+import uim.net;
+@safe:
 
 /**
  * Emits a Response to the PHP Server API.
@@ -19,8 +17,7 @@ use Psr\Http\messages.IResponse;
  * - It logs headers sent using UIM"s logging tools.
  * - Cookies are emitted using setcookie() to not conflict with ext/session
  */
-class ResponseEmitter : EmitterInterface
-{
+class ResponseEmitter : IEmitter {
     /**
      * Maximum output buffering size for each iteration.
      */

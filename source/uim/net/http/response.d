@@ -1,17 +1,12 @@
-vuim.net.http;
+/*********************************************************************************************************
+	Copyright: © 2015-2023 Ozan Nurettin Süel (Sicherheitsschmiede)                                        
+	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
+	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
+**********************************************************************************************************/
+module uim.net.http.response;
 
 import uim.net;
-@safe: 
-
-use DateTime;
-use DateTimeInterface;
-use DateTimeZone;
-use InvalidArgumentException;
-use Laminas\Diactoros\MessageTrait;
-use Laminas\Diactoros\Stream;
-use Psr\Http\messages.IResponse;
-use Psr\Http\messages.StreamInterface;
-use SplFileInfo;
+@safe:
 
 /**
  * Responses contain the response text, status and headers of a HTTP response.
@@ -22,26 +17,15 @@ use SplFileInfo;
  * include status codes that are now allowed which will throw an
  * `\InvalidArgumentException`.
  */
-class Response : IResponse
-{
+class Response : IResponse {
     use MessageTrait;
 
-    /**
-     * @var int
-     */
-    const STATUS_CODE_MIN = 100;
+    const int STATUS_CODE_MIN = 100;
 
-    /**
-     * @var int
-     */
-    const STATUS_CODE_MAX = 599;
+    const int STATUS_CODE_MAX = 599;
 
-    /**
-     * Allowed HTTP status codes and their default description.
-     *
-     * @var array<int, string>
-     */
-    protected _statusCodes = [
+    // Allowed HTTP status codes and their default description.
+    protected string[int] _statusCodes = [
         100: "Continue",
         101: "Switching Protocols",
         102: "Processing",

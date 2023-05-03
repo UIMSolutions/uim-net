@@ -71,8 +71,7 @@ import uim.net;
  * specify which authentication strategy you want to use.
  * UIM comes with built-in support for basic authentication.
  */
-class Client : ClientInterface
-{
+class Client : IClient {
     use InstanceConfigTrait;
 
     /**
@@ -98,26 +97,15 @@ class Client : ClientInterface
     /**
      * List of cookies from responses made with this client.
      *
-     * Cookies are indexed by the cookie"s domain or
-     * request host name.
-     *
-     * var DHTP.Cookie\CookieCollection
+     * Cookies are indexed by the cookie"s domain or request host name.
      */
-    protected _cookies;
+    protected CookieCollection _cookies;
 
-    /**
-     * Mock adapter for stubbing requests in tests.
-     *
-     * var DHTP.Client\Adapter\Mock|null
-     */
-    protected static _mockAdapter;
+    // Mock adapter for stubbing requests in tests.
+    protected static  Mock _mockAdapter;
 
-    /**
-     * Adapter for sending requests.
-     *
-     * var DHTP.Client\IAdapter
-     */
-    protected _adapter;
+    // Adapter for sending requests.
+    protected IAdapter _adapter;
 
     /**
      * Create a new HTTP Client.
@@ -403,11 +391,11 @@ class Client : ClientInterface
     /**
      * Sends a PSR-7 request and returns a PSR-7 response.
      *
-     * @param \Psr\Http\messages.RequestInterface myRequest Request instance.
+     * @param \Psr\Http\messages.IRequest myRequest Request instance.
      * @return \Psr\Http\messages.IResponse Response instance.
      * @throws \Psr\Http\Client\ClientExceptionInterface If an error happens while processing the request.
      */
-    IResponse sendRequest(RequestInterface myRequest) {
+    IResponse sendRequest(IRequest myRequest) {
         return this.send(myRequest, _config);
     }
 
@@ -417,11 +405,11 @@ class Client : ClientInterface
      * Used internally by other methods, but can also be used to send
      * handcrafted Request objects.
      *
-     * @param \Psr\Http\messages.RequestInterface myRequest The request to send.
+     * @param \Psr\Http\messages.IRequest myRequest The request to send.
      * @param array<string, mixed> myOptions Additional options to use.
      * returns DHTPResponse
      */
-    Response send(RequestInterface myRequest, array myOptions = null) {
+    Response send(IRequest myRequest, array myOptions = null) {
         $redirects = 0;
         if (isset(myOptions["redirect"])) {
             $redirects = (int)myOptions["redirect"];
@@ -487,11 +475,11 @@ class Client : ClientInterface
     /**
      * Send a request without redirection.
      *
-     * @param \Psr\Http\messages.RequestInterface myRequest The request to send.
+     * @param \Psr\Http\messages.IRequest myRequest The request to send.
      * @param array<string, mixed> myOptions Additional options to use.
      * returns DHTPResponse
      */
-    protected Response _sendRequest(RequestInterface myRequest, array myOptions) {
+    protected Response _sendRequest(IRequest myRequest, array myOptions) {
         if (static::_mockAdapter) {
             $responses = static::_mockAdapter.send(myRequest, myOptions);
         }
