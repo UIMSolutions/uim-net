@@ -1,12 +1,8 @@
 module uim.net.http.Middleware;
 
-import uim.net.http.Cookie\CookieCollection;
-import uim.net.http.Response;
-import uim.net.utilities.CookieCryptTrait;
-use Psr\Http\messages.IResponse;
-use Psr\Http\messages.IServerRequest;
-use Psr\Http\servers.IMiddleware;
-use Psr\Http\servers.RequestHandlerInterface;
+import uim.net;
+@safe:
+
 
 /**
  * Middleware for encrypting & decrypting cookies.
@@ -22,8 +18,7 @@ use Psr\Http\servers.RequestHandlerInterface;
  * The encryption types and padding are compatible with those used by CookieComponent
  * for backwards compatibility.
  */
-class EncryptedCookieMiddleware : IMiddleware
-{
+class EncryptedCookieMiddleware : IMiddleware {
     use CookieCryptTrait;
 
     /**

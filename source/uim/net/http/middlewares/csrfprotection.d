@@ -6,7 +6,7 @@ use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
 use Psr\Http\servers.IMiddleware;
 use Psr\Http\servers.RequestHandlerInterface;
-use RuntimeException;
+use UIMException;
 
 /**
  * Provides CSRF protection & validation.
@@ -115,7 +115,7 @@ class CsrfProtectionMiddleware : IMiddleware
             return $handler.handle($request);
         }
         if ($request.getAttribute("csrfToken")) {
-            throw new RuntimeException(
+            throw new UIMException(
                 "A CSRF token is already set in the request." ~
                 "\n" ~
                 "Ensure you do not have the CSRF middleware applied more than once~ " ~

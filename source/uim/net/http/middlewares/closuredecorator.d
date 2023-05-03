@@ -3,12 +3,6 @@ module uim.net.https.middlewares;
 @safe:
 import uim.net
 
-use Closure;
-use Psr\Http\messages.IResponse;
-use Psr\Http\messages.IServerRequest;
-use Psr\Http\servers.IMiddleware;
-use Psr\Http\servers.RequestHandlerInterface;
-
 /**
  * Decorate closures as PSR-15 middleware.
  *
@@ -23,8 +17,7 @@ use Psr\Http\servers.RequestHandlerInterface;
  *
  * such that it will operate as PSR-15 middleware.
  */
-class ClosureDecoratorMiddleware : IMiddleware
-{
+class ClosureDecoratorMiddleware : IMiddleware {
     /**
      * A Closure.
      *

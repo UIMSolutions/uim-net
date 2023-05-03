@@ -1,4 +1,4 @@
-module uim.net.http.clients;
+module uim.net.http.clients.message;
 
 /**
  * Base class for other HTTP requests/responses
@@ -6,91 +6,56 @@ module uim.net.http.clients;
  * Defines some common helper methods, constants
  * and properties.
  */
-class Message
-{
-    /**
-     * HTTP 200 code
-    */
+class Message {
+    // HTTP 200 code
     const int STATUS_OK = 200;
 
-    /**
-     * HTTP 201 code
-    */
+    // HTTP 201 code
     const int STATUS_CREATED = 201;
 
-    /**
-     * HTTP 202 code
-    */
+    // HTTP 202 code
     const int STATUS_ACCEPTED = 202;
 
-    /**
-     * HTTP 203 code
-    */
+    // HTTP 203 code
     const int STATUS_NON_AUTHORITATIVE_INFORMATION = 203;
 
-    /**
-     * HTTP 204 code
-    */
+    // HTTP 204 code
     const int STATUS_NO_CONTENT = 204;
 
-    /**
-     * HTTP 301 code
-    */
+    // HTTP 301 code
     const int STATUS_MOVED_PERMANENTLY = 301;
 
-    /**
-     * HTTP 302 code
-    */
+    // HTTP 302 code
     const int STATUS_FOUND = 302;
 
-    /**
-     * HTTP 303 code
-    */
+    // HTTP 303 code
     const int STATUS_SEE_OTHER = 303;
 
-    /**
-     * HTTP 307 code
-    */
+    // HTTP 307 code
     const int STATUS_TEMPORARY_REDIRECT = 307;
 
-    /**
-     * HTTP GET method
-     */
+    // HTTP GET method
     const string METHOD_GET = "GET";
 
-    /**
-     * HTTP POST method
-     */
+    // HTTP POST method
     const string METHOD_POST = "POST";
 
-    /**
-     * HTTP PUT method
-     */
+    // HTTP PUT method
     const string METHOD_PUT = "PUT";
 
-    /**
-     * HTTP DELETE method
-     */
+    // HTTP DELETE method
     const string METHOD_DELETE = "DELETE";
 
-    /**
-     * HTTP PATCH method
-     */
+    // HTTP PATCH method
     const string METHOD_PATCH = "PATCH";
 
-    /**
-     * HTTP OPTIONS method
-     */
+    // HTTP OPTIONS method
     const string METHOD_OPTIONS = "OPTIONS";
 
-    /**
-     * HTTP TRACE method
-     */
+    // HTTP TRACE method
     const string METHOD_TRACE = "TRACE";
 
-    /**
-     * HTTP HEAD method
-     */
+    // HTTP HEAD method
     const string METHOD_HEAD = "HEAD";
 
     /**

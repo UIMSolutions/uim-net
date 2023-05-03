@@ -3,9 +3,6 @@ module uim.net.http.clients\Auth;
 import uim.net;
 @safe:
 
-use Psr\Http\messages.UriInterface;
-use UIMException;
-
 /**
  * Oauth 1 authentication strategy for Cake\Http\Client
  *
@@ -16,8 +13,7 @@ use UIMException;
  * Generally not directly constructed, but instead used by {@link uim.net.http\Client}
  * when $options["auth"]["type"] is "oauth"
  */
-class Oauth
-{
+class Oauth {
     /**
      * Add headers for Oauth authorization.
      *
@@ -26,8 +22,7 @@ class Oauth
      * returns DHTPRequest The updated request.
      * @throws uim.net.Core\exceptions.UIMException On invalid signature types.
      */
-    function authentication(Request $request, array $credentials): Request
-    {
+    Request authentication(Request $request, array $credentials) {
         if (!isset($credentials["consumerKey"])) {
             return $request;
         }

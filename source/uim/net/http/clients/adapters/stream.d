@@ -8,9 +8,6 @@ module uim.net.http.clients.adapters;
 import uim.net;
 @safe:
 
-use Composer\CaBundle\CaBundle;
-use Psr\Http\messages.IRequest;
-
 /**
  * : sending Cake\Http\Client\Request
  * via php"s stream API.

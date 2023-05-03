@@ -2,7 +2,8 @@
 	Copyright: © 2015-2023 Ozan Nurettin Süel (Sicherheitsschmiede)                                        
 	License: Subject to the terms of the Apache 2.0 license, as written in the included LICENSE.txt file.  
 	Authors: Ozan Nurettin Süel (Sicherheitsschmiede)                                                      
-**********************************************************************************************************/module uim.net.http.clients.formdatapart;
+**********************************************************************************************************/
+module uim.net.http.clients.formdatapart;
 
 import uim.net;
 @safe:
@@ -16,57 +17,30 @@ import uim.net;
  *
  * @internal
  */
-class FormDataPart
-{
-    /**
-     * Name of the value.
-     */
+class FormDataPart {
+    // Name of the value.
     protected string _name;
 
-    /**
-     * Value to send.
-     */
+    // Value to send.
     protected string _value;
 
-    /**
-     * Content type to use
-     *
-     * @var string|null
-     */
-    protected _type;
+    // Content type to use
+    protected string _type;
 
-    /**
-     * Disposition to send
-     */
+    // Disposition to send
     protected string _disposition;
 
-    /**
-     * Filename to send if using files.
-     *
-     * @var string|null
-     */
-    protected _filename;
+    // Filename to send if using files.
+    protected string _filename;
 
-    /**
-     * The encoding used in this part.
-     *
-     * @var string|null
-     */
-    protected _transferEncoding;
+    // The encoding used in this part.
+    protected string _transferEncoding;
 
-    /**
-     * The contentId for the part
-     *
-     * @var string|null
-     */
-    protected _contentId;
+    // The contentId for the part
+    protected string _contentId;
 
-    /**
-     * The charset attribute for the Content-Disposition header fields
-     *
-     * @var string|null
-     */
-    protected _charset;
+    // The charset attribute for the Content-Disposition header fields
+    protected string _charset;
 
     /**
      * Constructor
@@ -176,30 +150,30 @@ class FormDataPart
      * Creates a string suitable for use in HTTP requests.
      */
     string toString() {
-        $out = "";
-        if (_disposition) {
-            $out ~= "Content-Disposition: " ~ _disposition;
-            if (_name) {
-                $out ~= "; " ~ _headerParameterToString("name", _name);
-            }
-            if (_filename) {
-                $out ~= "; " ~ _headerParameterToString("filename", _filename);
-            }
-            $out ~= "\r\n";
+      auto result = "";
+      if (_disposition) {
+        result ~= "Content-Disposition: " ~ _disposition;
+        if (_name) {
+          result ~= "; " ~ _headerParameterToString("name", _name);
         }
-        if (_type) {
-            $out ~= "Content-Type: " ~ _type ~ "\r\n";
+        if (_filename) {
+          result ~= "; " ~ _headerParameterToString("filename", _filename);
         }
-        if (_transferEncoding) {
-            $out ~= "Content-Transfer-Encoding: " ~ _transferEncoding ~ "\r\n";
-        }
-        if (_contentId) {
-            $out ~= "Content-ID: <" ~ _contentId ~ ">\r\n";
-        }
-        $out ~= "\r\n";
-        $out ~= _value;
+        result ~= "\r\n";
+      }
+      if (_type) {
+        result ~= "Content-Type: " ~ _type ~ "\r\n";
+      }
+      if (_transferEncoding) {
+        result ~= "Content-Transfer-Encoding: " ~ _transferEncoding ~ "\r\n";
+      }
+      if (_contentId) {
+        result ~= "Content-ID: <" ~ _contentId ~ ">\r\n";
+      }
+      result ~= "\r\n";
+      result ~= _value;
 
-        return $out;
+      return result;
     }
 
     /**
@@ -213,12 +187,12 @@ class FormDataPart
      * @return string
      */
     protected string _headerParameterToString(string myName, string myValue) {
-        $transliterated = Text::transliterate(replace(""", "", myValue));
-        $return = sprintf("%s='%s'", myName, $transliterated);
-        if (_charset  !is null && myValue != $transliterated) {
-            $return ~= sprintf("; %s*=%s"'%s', myName, strtolower(_charset), rawurlencode(myValue));
-        }
+      $transliterated = Text::transliterate(replace("\"", "", myValue));
+      $return = sprintf("%s='%s'", myName, $transliterated);
+      if (_charset  !is null && myValue != $transliterated) {
+          $return ~= sprintf("; %s*=%s"'%s', myName, strtolower(_charset), rawurlencode(myValue));
+      }
 
-        return $return;
+      return $return;
     }
 }

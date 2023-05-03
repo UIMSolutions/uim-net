@@ -1,4 +1,4 @@
-module uim.net.http.clients\Auth;
+module uim.net.http.clients.auths.basic;
 
 import uim.net;
 @safe:
@@ -9,53 +9,45 @@ import uim.net;
  * Generally not directly constructed, but instead used by {@link uim.net.http\Client}
  * when $options["auth"]["type"] is "basic"
  */
-class Basic
-{
-    /**
-     * Add Authorization header to the request.
-     *
-     * @param uim.net.http.Client\Request $request Request instance.
-     * @param array $credentials Credentials.
-     * returns DHTPRequest The updated request.
-     * @see https://www.ietf.org/rfc/rfc2617.txt
-     */
-    function authentication(Request $request, array $credentials): Request
-    {
-        if (isset($credentials["username"], $credentials["password"])) {
-            $value = _generateHeader($credentials["username"], $credentials["password"]);
-            /** var DHTP.Client\Request $request */
-            $request = $request.withHeader("Authorization", $value);
-        }
-
-        return $request;
+class Basic {
+  /**
+    * Add Authorization header to the request.
+    *
+    * @param uim.net.http.Client\Request $request Request instance.
+    * @param array $credentials Credentials.
+    * returns DHTPRequest The updated request.
+    * @see https://www.ietf.org/rfc/rfc2617.txt
+    */
+  Request authentication(Request $request, array $credentials) {
+    if (isset($credentials["username"], $credentials["password"])) {
+      $value = _generateHeader($credentials["username"], $credentials["password"]);
+      /** var DHTP.Client\Request $request */
+      $request = $request.withHeader("Authorization", $value);
     }
 
-    /**
-     * Proxy Authentication
-     *
-     * @param uim.net.http.Client\Request $request Request instance.
-     * @param array $credentials Credentials.
-     * returns DHTPRequest The updated request.
-     * @see https://www.ietf.org/rfc/rfc2617.txt
-     */
-    function proxyAuthentication(Request $request, array $credentials): Request
-    {
-        if (isset($credentials["username"], $credentials["password"])) {
-            $value = _generateHeader($credentials["username"], $credentials["password"]);
-            /** var DHTP.Client\Request $request */
-            $request = $request.withHeader("Proxy-Authorization", $value);
-        }
+    return $request;
+  }
 
-        return $request;
+  /**
+    * Proxy Authentication
+    *
+    * @param uim.net.http.Client\Request $request Request instance.
+    * @param array $credentials Credentials.
+    * returns DHTPRequest The updated request.
+    * @see https://www.ietf.org/rfc/rfc2617.txt
+    */
+  Request proxyAuthentication(Request $request, array $credentials) {
+    if (isset($credentials["username"], $credentials["password"])) {
+      $value = _generateHeader($credentials["username"], $credentials["password"]);
+      /** var DHTP.Client\Request $request */
+      $request = $request.withHeader("Proxy-Authorization", $value);
     }
 
-    /**
-     * Generate basic [proxy] authentication header
-     *
-     * @param string $user Username.
-     * @param string $pass Password.
-     */
-    protected string _generateHeader(string $user, string $pass) {
-        return "Basic " ~ base64_encode($user ~ ":" ~ $pass);
-    }
+    return $request;
+  }
+
+  // Generate basic [proxy] authentication header
+  protected string _generateHeader(string username, string password) {
+      return "Basic " ~ base64_encode($user ~ ":" ~ $pass);
+  }
 }

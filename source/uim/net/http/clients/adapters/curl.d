@@ -8,9 +8,6 @@ module uim.net.http.clients.adapters;
 import uim.net;
 @safe:
 
-use Composer\CaBundle\CaBundle;
-use Psr\Http\messages.IRequest;
-
 /**
  * : sending Cake\Http\Client\Request via ext/curl.
  *
@@ -19,8 +16,7 @@ use Psr\Http\messages.IRequest;
  * can be set via the `curl` option key when making requests or configuring
  * a client.
  */
-class Curl : IAdapter
-{
+class Curl : IAdapter {
 
     array send(IRequest $request, STRINGAA someOptions) {
         if (!extension_loaded("curl")) {
