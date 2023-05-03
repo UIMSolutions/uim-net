@@ -10,19 +10,13 @@ import uim.net;
 
 // Represents an HTTP 451 error.
 class UnavailableForLegalReasonsException : HttpException {
-  protected _defaultCode = 451;
+  this(string myMessage = null, int theCode = 0, Throwable nextInChain = null) {
+    super(myMessage, code, nextInChain);
+  }
 
-  /**
-    * Constructor
-    *
-    * @param string|null myMessage If no message is given "Unavailable For Legal Reasons" will be the message
-    * @param int|null $code Status code, defaults to 451
-    * @param \Throwable|null $previous The previous exception.
-    */
-  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
-    if (empty(myMessage)) {
-        myMessage = "Unavailable For Legal Reasons";
-    }
-    super.this(myMessage, $code, $previous);
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(451)
+      .message("Unavailable For Legal Reasons");
   }
 }

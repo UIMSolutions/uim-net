@@ -10,15 +10,13 @@ import uim.net;
 
 /**
  * Parent class for all the HTTP related exceptions in UIM.
- * All HTTP status/error related exceptions should extend this class so
- * catch blocks can be specifically typed.
- *
- * You may also use this as a meaningful bridge to {@link uim.net.Core\exceptions.UIMException}, e.g.:
- * throw new uim.net.Network\exceptions.HttpException("HTTP Version Not Supported", 505);
+ * All HTTP status/error related exceptions should extend this class so catch blocks can be specifically typed.
  */
 class HttpException : UIMException {
-  protected _defaultCode = 500;
-  protected  headers = null;
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(500);
+  }
 
   // Response Headers
   mixin(OProperty!("string[][string]", "headers"));

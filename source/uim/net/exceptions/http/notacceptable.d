@@ -10,19 +10,13 @@ import uim.net;
 
 // Represents an HTTP 406 error.
 class NotAcceptableException : HttpException {
-  protected _defaultCode = 406;
+  this(string myMessage = null, int theCode = 0, Throwable nextInChain = null) {
+    super(myMessage, code, nextInChain);
+  }
 
-  /**
-    * Constructor
-    *
-    * @param string|null myMessage If no message is given "Not Acceptable" will be the message
-    * @param int|null $code Status code, defaults to 406
-    * @param \Throwable|null $previous The previous exception.
-    */
-  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
-      if (empty(myMessage)) {
-          myMessage = "Not Acceptable";
-      }
-      super.this(myMessage, $code, $previous);
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(406)
+      .message("Not Acceptable");
   }
 }

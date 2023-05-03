@@ -10,19 +10,13 @@ import uim.net;
 
 // Represents an HTTP 401 error.
 class UnauthorizedException : HttpException {
-  protected _defaultCode = 401;
+  this(string myMessage = null, int theCode = 0, Throwable nextInChain = null) {
+    super(myMessage, code, nextInChain);
+  }
 
-  /**
-    * Constructor
-    *
-    * @param string|null myMessage If no message is given "Unauthorized" will be the message
-    * @param int|null $code Status code, defaults to 401
-    * @param \Throwable|null $previous The previous exception.
-    */
-  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
-    if (empty(myMessage)) {
-        myMessage = "Unauthorized";
-    }
-    super.this(myMessage, $code, $previous);
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(401)
+      .message("Unauthorized");
   }
 }

@@ -10,20 +10,13 @@ import uim.net;
 
 // Represents an HTTP 405 error.
 class MethodNotAllowedException : HttpException {
+  this(string myMessage = null, int theCode = 0, Throwable nextInChain = null) {
+    super(myMessage, code, nextInChain);
+  }
 
-  protected _defaultCode = 405;
-
-  /**
-    * Constructor
-    *
-    * @param string|null myMessage If no message is given "Method Not Allowed" will be the message
-    * @param int|null $code Status code, defaults to 405
-    * @param \Throwable|null $previous The previous exception.
-    */
-  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
-    if (empty(myMessage)) {
-        myMessage = "Method Not Allowed";
-    }
-    super.this(myMessage, $code, $previous);
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(405)
+      .message("Method Not Allowed");
   }
 }

@@ -10,20 +10,13 @@ import uim.net;
 
 // Represents an HTTP 403 error caused by an invalid CSRF token
 class InvalidCsrfTokenException : HttpException {
+  this(string myMessage = null, int theCode = 0, Throwable nextInChain = null) {
+    super(myMessage, code, nextInChain);
+  }
 
-  protected _defaultCode = 403;
-
-  /**
-    * Constructor
-    *
-    * @param string|null myMessage If no message is given "Invalid CSRF Token" will be the message
-    * @param int|null $code Status code, defaults to 403
-    * @param \Throwable|null $previous The previous exception.
-    */
-  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
-    if (empty(myMessage)) {
-        myMessage = "Invalid CSRF Token";
-    }
-    super.this(myMessage, $code, $previous);
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(403)
+      .message("Invalid CSRF Token");
   }
 }

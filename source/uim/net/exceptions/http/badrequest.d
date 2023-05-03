@@ -10,20 +10,13 @@ import uim.net;
 
 // Represents an HTTP 400 error.
 class BadRequestException : HttpException {
+  this(string myMessage = null, int theCode = 0, Throwable nextInChain = null) {
+    super(myMessage, code, nextInChain);
+  }
 
-  protected _defaultCode = 400;
-
-  /**
-    * Constructor
-    *
-    * @param string|null myMessage If no message is given "Bad Request" will be the message
-    * @param int|null $code Status code, defaults to 400
-    * @param \Throwable|null $previous The previous exception.
-    */
-  this(string myMessage = null, int theCode = 0, ?Throwable $previous = null) {
-    if (empty(myMessage)) {
-        myMessage = "Bad Request";
-    }
-    super.this(myMessage, $code, $previous);
+  void initialize(Json configSettings = Json(null)) {
+    this
+      .defaultCode(400)
+      .message("Bad Request");
   }
 }
