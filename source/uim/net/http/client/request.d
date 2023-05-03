@@ -7,7 +7,7 @@ module uim.net.http.Client;
 
 use Laminas\Diactoros\RequestTrait;
 use Laminas\Diactoros\Stream;
-use Psr\Http\messages.RequestInterface;
+use Psr\Http\messages.IRequest;
 
 /**
  * : methods for HTTP requests.
@@ -15,7 +15,7 @@ use Psr\Http\messages.RequestInterface;
  * Used by Cake\Http\Client to contain request information
  * for making requests.
  */
-class Request : Message : RequestInterface
+class Request : Message : IRequest
 {
     use RequestTrait;
 

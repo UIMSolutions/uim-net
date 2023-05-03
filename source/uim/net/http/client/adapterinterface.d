@@ -5,7 +5,7 @@
 **********************************************************************************************************/
 module uim.net.http.Client;
 
-use Psr\Http\messages.RequestInterface;
+use Psr\Http\messages.IRequest;
 
 /**
  * Http client adapter interface.
@@ -15,9 +15,9 @@ interface IAdapter
     /**
      * Send a request and get a response back.
      *
-     * @param \Psr\Http\messages.RequestInterface $request The request object to send.
+     * @param \Psr\Http\messages.IRequest $request The request object to send.
      * @param array<string, mixed> $options Array of options for the stream.
      * @return array<uim.net.http\Client\Response> Array of populated Response objects
      */
-    array send(RequestInterface $request, STRINGAA someOptions);
+    array send(IRequest $request, STRINGAA someOptions);
 }

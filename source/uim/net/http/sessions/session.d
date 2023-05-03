@@ -1,17 +1,6 @@
+module uim.net.http;
 
-
-
- *
-
-
- * @since         0.10.0
-  */module uim.net.http;
-
-import uim.net.core.App;
-import uim.net.utilities.Hash;
-use InvalidArgumentException;
-use RuntimeException;
-use SessionHandlerInterface;
+import uim.net;
 
 /**
  * This class is a wrapper for the native PHP session functions. It provides
@@ -26,8 +15,7 @@ use SessionHandlerInterface;
  * values from the `session.*` directives in php.ini. This class will also alter such
  * directives when configuration values are provided.
  */
-class Session
-{
+class Session {
     /**
      * The Session handler instance used as an engine for persisting the session data.
      *
@@ -35,14 +23,10 @@ class Session
      */
     protected _engine;
 
-    /**
-     * Indicates whether the sessions has already started
-     */
+    // Indicates whether the sessions has already started
     protected bool _started;
 
-    /**
-     * The time in seconds the session will be valid for
-     */
+    // The time in seconds the session will be valid for
     protected int _lifetime;
 
     /**

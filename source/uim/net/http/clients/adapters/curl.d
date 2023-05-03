@@ -9,7 +9,7 @@ import uim.net;
 @safe:
 
 use Composer\CaBundle\CaBundle;
-use Psr\Http\messages.RequestInterface;
+use Psr\Http\messages.IRequest;
 
 /**
  * : sending Cake\Http\Client\Request via ext/curl.
@@ -22,7 +22,7 @@ use Psr\Http\messages.RequestInterface;
 class Curl : IAdapter
 {
 
-    array send(RequestInterface $request, STRINGAA someOptions) {
+    array send(IRequest $request, STRINGAA someOptions) {
         if (!extension_loaded("curl")) {
             throw new ClientException("curl extension is not loaded.");
         }
@@ -59,10 +59,10 @@ class Curl : IAdapter
     /**
      * Convert client options into curl options.
      *
-     * @param \Psr\Http\messages.RequestInterface $request The request.
+     * @param \Psr\Http\messages.IRequest $request The request.
      * @param array<string, mixed> $options The client options
      */
-    array buildOptions(RequestInterface $request, STRINGAA someOptions) {
+    array buildOptions(IRequest $request, STRINGAA someOptions) {
         $headers = null;
         foreach ($request.getHeaders() as $key: $values) {
             $headers ~= $key ~ ": " ~ implode(", ", $values);
@@ -145,9 +145,9 @@ class Curl : IAdapter
     /**
      * Convert HTTP version number into curl value.
      *
-     * @param \Psr\Http\messages.RequestInterface $request The request to get a protocol version for.
+     * @param \Psr\Http\messages.IRequest $request The request to get a protocol version for.
      */
-    protected int getProtocolVersion(RequestInterface $request) {
+    protected int getProtocolVersion(IRequest $request) {
         switch ($request.getProtocolVersion()) {
             case "1.0":
                 return CURL_HTTP_VERSION_1_0;

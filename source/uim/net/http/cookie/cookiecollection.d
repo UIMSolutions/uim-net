@@ -16,7 +16,7 @@ use DateTimeZone;
 use Exception;
 use InvalidArgumentException;
 use IteratorAggregate;
-use Psr\Http\messages.RequestInterface;
+use Psr\Http\messages.IRequest;
 use Psr\Http\messages.IResponse;
 use Psr\Http\messages.IServerRequest;
 use Traversable;
@@ -209,12 +209,12 @@ class CookieCollection : IteratorAggregate, Countable
      * situation. Cookies that match the request"s domain + path that are not expired
      * when this method is called will be applied to the request.
      *
-     * @param \Psr\Http\messages.RequestInterface $request The request to update.
+     * @param \Psr\Http\messages.IRequest $request The request to update.
      * @param array $extraCookies Associative array of additional cookies to add into the request. This
      *   is useful when you have cookie data from outside the collection you want to send.
-     * @return \Psr\Http\messages.RequestInterface An updated request.
+     * @return \Psr\Http\messages.IRequest An updated request.
      */
-    function addToRequest(RequestInterface $request, array $extraCookies = null): RequestInterface
+    function addToRequest(IRequest $request, array $extraCookies = null): IRequest
     {
         $uri = $request.getUri();
         $cookies = this.findMatchingCookies(
@@ -286,10 +286,10 @@ class CookieCollection : IteratorAggregate, Countable
      * Create a new collection that includes cookies from the response.
      *
      * @param \Psr\Http\messages.IResponse $response Response to extract cookies from.
-     * @param \Psr\Http\messages.RequestInterface $request Request to get cookie context from.
+     * @param \Psr\Http\messages.IRequest $request Request to get cookie context from.
      * @return static
      */
-    function addFromResponse(IResponse $response, RequestInterface $request) {
+    function addFromResponse(IResponse $response, IRequest $request) {
         $uri = $request.getUri();
         $host = $uri.getHost();
         $path = $uri.getPath() ?: "/";

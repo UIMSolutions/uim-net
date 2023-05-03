@@ -7,7 +7,7 @@ module uim.net.http.clients.adapters;
 
 use Closure;
 use InvalidArgumentException;
-use Psr\Http\messages.RequestInterface;
+use Psr\Http\messages.IRequest;
 
 /**
  * : sending requests to an array of stubbed responses
@@ -33,11 +33,11 @@ class Mock : IAdapter
      *
      * - `match` An additional closure to match requests with.
      *
-     * @param \Psr\Http\messages.RequestInterface $request A partial request to use for matching.
+     * @param \Psr\Http\messages.IRequest $request A partial request to use for matching.
      * @param uim.net.http.Client\Response $response The response that matches the request.
      * @param array<string, mixed> $options See above.
      */
-    void addResponse(RequestInterface $request, Response $response, STRINGAA someOptions) {
+    void addResponse(IRequest $request, Response $response, STRINGAA someOptions) {
         if (isset($options["match"]) && !($options["match"] instanceof Closure)) {
             $type = getTypeName($options["match"]);
             throw new InvalidArgumentException("The `match` option must be a `Closure`. Got `{$type}`.");
@@ -52,11 +52,11 @@ class Mock : IAdapter
     /**
      * Find a response if one exists.
      *
-     * @param \Psr\Http\messages.RequestInterface $request The request to match
+     * @param \Psr\Http\messages.IRequest $request The request to match
      * @param array<string, mixed> $options Unused.
      * returns DHTPResponse[] The matched response or an empty array for no matches.
      */
-    array send(RequestInterface $request, STRINGAA someOptions) {
+    array send(IRequest $request, STRINGAA someOptions) {
         $found = null;
         $method = $request.getMethod();
         $requestUri = (string)$request.getUri();
@@ -97,9 +97,9 @@ class Mock : IAdapter
      * Check if the request URI matches the mock URI.
      *
      * @param string $requestUri The request being sent.
-     * @param \Psr\Http\messages.RequestInterface $mock The request being mocked.
+     * @param \Psr\Http\messages.IRequest $mock The request being mocked.
      */
-    protected bool urlMatches(string $requestUri, RequestInterface $mock) {
+    protected bool urlMatches(string $requestUri, IRequest $mock) {
         $mockUri = (string)$mock.getUri();
         if ($requestUri == $mockUri) {
             return true;
