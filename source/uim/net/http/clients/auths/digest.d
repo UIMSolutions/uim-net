@@ -10,12 +10,7 @@ import uim.net;
  * when $options["auth"]["type"] is "digest"
  */
 class Digest {
-  /**
-    * Instance of Cake\Http\Client
-    *
-    * var DHTP.Client
-    */
-  protected _client;
+  protected Client _client;
 
   /**
     * Constructor
@@ -23,8 +18,8 @@ class Digest {
     * @param uim.net.http.Client $client Http client object.
     * @param array|null $options Options list.
     */
-  this(Client $client, ?STRINGAA someOptions = null) {
-      _client = $client;
+  this(Client aClient, STRINGAA someOptions = null) {
+    _client = aClient;
   }
 
   /**

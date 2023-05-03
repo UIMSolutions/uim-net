@@ -11,42 +11,26 @@ import uim.net;
  * and files.
  */
 class FormData : Countable {
-    /**
-     * Boundary marker.
-     */
+    // Boundary marker.
     protected string _boundary;
 
-    /**
-     * Whether this formdata object has attached files.
-     *
-     * @var bool
-     */
-    protected _hasFile = false;
+    // Whether this formdata object has attached files.
+    protected bool _hasFile = false;
 
-    /**
-     * Whether this formdata object has a complex part.
-     *
-     * @var bool
-     */
-    protected _hasComplexPart = false;
+    // Whether this formdata object has a complex part.
+    protected bool _hasComplexPart = false;
 
-    /**
-     * The parts in the form data.
-     *
-     * @var array<uim.net.http\Client\FormDataPart>
-     */
-    protected _parts = null;
+    // The parts in the form data.
+    protected FormDataPart[] _parts = null;
 
-    /**
-     * Get the boundary marker
-     */
+    // Get the boundary marker
     string boundary() {
-        if (_boundary) {
-            return _boundary;
-        }
-        _boundary = md5(uniqid((string)time()));
-
+      if (_boundary) {
         return _boundary;
+      }
+      _boundary = md5(uniqid((string)time()));
+
+      return _boundary;
     }
 
     /**
@@ -56,9 +40,8 @@ class FormData : Countable {
      * @param string myValue The value to add.
      * returns DHTPFormDataPart
      */
-    function newPart(string myName, string myValue): DHTPFormDataPart
-    {
-        return new FormDataPart(myName, myValue);
+    DHTPFormDataPart newPart(string myName, string myValue) {
+      return new FormDataPart(myName, myValue);
     }
 
     /**
@@ -76,20 +59,20 @@ class FormData : Countable {
      * @return this
      */
     function add(myName, myValue = null) {
-        if (is_string(myName)) {
-            if (is_array(myValue)) {
-                this.addRecursive(myName, myValue);
-            } elseif (is_resource(myValue)) {
-                this.addFile(myName, myValue);
-            } else {
-                _parts ~= this.newPart(myName, (string)myValue);
-            }
+      if (is_string(myName)) {
+        if (is_array(myValue)) {
+            this.addRecursive(myName, myValue);
+        } elseif (is_resource(myValue)) {
+            this.addFile(myName, myValue);
         } else {
-            _hasComplexPart = true;
-            _parts ~= myName;
+            _parts ~= this.newPart(myName, (string)myValue);
         }
+      } else {
+          _hasComplexPart = true;
+          _parts ~= myName;
+      }
 
-        return this;
+      return this;
     }
 
     /**
@@ -97,15 +80,14 @@ class FormData : Countable {
      *
      * Iterates the parameter and adds all the key/values.
      *
-     * @param array myData Array of data to add.
      * @return this
      */
-    function addMany(array myData) {
-        foreach (myData as myName: myValue) {
-            this.add(myName, myValue);
-        }
+    O addMany(this O)(array dataToAdd) {
+      foreach (myName, myValue; dataToAdd) {
+          this.add(myName, myValue);
+      }
 
-        return this;
+      return cst(O)this;
     }
 
     /**
@@ -116,35 +98,34 @@ class FormData : Countable {
      * @param mixed myValue Either a string filename, or a filehandle.
      * returns DHTPFormDataPart
      */
-    function addFile(string myName, myValue): DHTPFormDataPart
-    {
-        _hasFile = true;
+    DHTPFormDataPart addFile(string myName, myValue) {
+      _hasFile = true;
 
-        myfilename = false;
-        myContentsType = "application/octet-stream";
-        if (is_resource(myValue)) {
-            myContents = stream_get_contents(myValue);
-            if (stream_is_local(myValue)) {
-                $finfo = new finfo(FILEINFO_MIME);
-                $metadata = stream_get_meta_data(myValue);
-                myContentsType = $finfo.file($metadata["uri"]);
-                myfilename = basename($metadata["uri"]);
-            }
-        } else {
-            $finfo = new finfo(FILEINFO_MIME);
-            myValue = substr(myValue, 1);
-            myfilename = basename(myValue);
-            myContents = file_get_contents(myValue);
-            myContentsType = $finfo.file(myValue);
+      myfilename = false;
+      myContentsType = "application/octet-stream";
+      if (is_resource(myValue)) {
+        myContents = stream_get_contents(myValue);
+        if (stream_is_local(myValue)) {
+          $finfo = new finfo(FILEINFO_MIME);
+          $metadata = stream_get_meta_data(myValue);
+          myContentsType = $finfo.file($metadata["uri"]);
+          myfilename = basename($metadata["uri"]);
         }
-        $part = this.newPart(myName, myContents);
-        $part.type(myContentsType);
-        if (myfilename) {
-            $part.filename(myfilename);
-        }
-        this.add($part);
+      } else {
+        $finfo = new finfo(FILEINFO_MIME);
+        myValue = substr(myValue, 1);
+        myfilename = basename(myValue);
+        myContents = file_get_contents(myValue);
+        myContentsType = $finfo.file(myValue);
+      }
+      $part = this.newPart(myName, myContents);
+      $part.type(myContentsType);
+      if (myfilename) {
+          $part.filename(myfilename);
+      }
+      this.add($part);
 
-        return $part;
+      return $part;
     }
 
     /**
@@ -154,17 +135,17 @@ class FormData : Countable {
      * @param mixed myValue The value to add.
      */
     void addRecursive(string myName, myValue) {
-        foreach (myValue as myKey: myValue) {
-            myKey = myName ~ "[" ~ myKey ~ "]";
-            this.add(myKey, myValue);
-        }
+      foreach (myValue as myKey: myValue) {
+        myKey = myName ~ "[" ~ myKey ~ "]";
+        this.add(myKey, myValue);
+      }
     }
 
     /**
      * Returns the count of parts inside this object.
      */
     size_t count() {
-        return count(_parts);
+      return count(_parts);
     }
 
     /**
@@ -174,7 +155,7 @@ class FormData : Countable {
      * @return bool Whether there is a file in this payload.
      */
     bool hasFile() {
-        return _hasFile;
+      return _hasFile;
     }
 
     /**
@@ -187,7 +168,7 @@ class FormData : Countable {
      * @return bool Whether the payload is multipart.
      */
     bool isMultipart() {
-        return this.hasFile() || _hasComplexPart;
+      return this.hasFile() || _hasComplexPart;
     }
 
     /**
@@ -197,11 +178,11 @@ class FormData : Countable {
      * otherwise `application/x-www-form-urlencoded` will be used.
      */
     string contentType() {
-        if (!this.isMultipart()) {
-            return "application/x-www-form-urlencoded";
-        }
+      if (!this.isMultipart()) {
+          return "application/x-www-form-urlencoded";
+      }
 
-        return "multipart/form-data; boundary=" ~ this.boundary();
+      return "multipart/form-data; boundary=" ~ this.boundary();
     }
 
     /**
@@ -209,23 +190,23 @@ class FormData : Countable {
      * for use in an HTTP request.
      */
     string toString() {
-        if (this.isMultipart()) {
-            $boundary = this.boundary();
-            $out = "";
-            foreach (_parts as $part) {
-                $out ~= "--$boundary\r\n";
-                $out ~= (string)$part;
-                $out ~= "\r\n";
-            }
-            $out ~= "--$boundary--\r\n";
-
-            return $out;
-        }
-        myData = null;
+      if (this.isMultipart()) {
+        $boundary = this.boundary();
+        $out = "";
         foreach (_parts as $part) {
-            myData[$part.name()] = $part.value();
+            $out ~= "--$boundary\r\n";
+            $out ~= (string)$part;
+            $out ~= "\r\n";
         }
+        $out ~= "--$boundary--\r\n";
 
-        return http_build_query(myData);
+        return $out;
+      }
+      myData = null;
+      foreach (_parts as $part) {
+        myData[$part.name()] = $part.value();
+      }
+
+      return http_build_query(myData);
     }
 }
