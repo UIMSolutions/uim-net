@@ -1,12 +1,7 @@
-module uim.net.http.clients\Exception;
+module uim.net.exceptions.clients.network
 
-@safe:
 import uim.net;
-
-use Psr\Http\Client\NetworkExceptionInterface;
-use Psr\Http\messages.RequestInterface;
-use RuntimeException;
-use Throwable;
+@safe:
 
 /**
  * Thrown when the request cannot be completed because of network issues.
@@ -15,8 +10,7 @@ use Throwable;
  *
  * Example: the target host name can not be resolved or the connection failed.
  */
-class NetworkException : RuntimeException : NetworkExceptionInterface
-{
+class NetworkException : RuntimeException, INetworkException {
     /**
      * @var \Psr\Http\messages.RequestInterface
      */
@@ -41,8 +35,7 @@ class NetworkException : RuntimeException : NetworkExceptionInterface
      *
      * @return \Psr\Http\messages.RequestInterface
      */
-    function getRequest(): RequestInterface
-    {
+    IRequest getRequest():  {
         return this.request;
     }
 }

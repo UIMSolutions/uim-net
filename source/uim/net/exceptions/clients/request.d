@@ -1,12 +1,7 @@
-module uim.net.http.clients\Exception;
+module uim.net.exceptions.clients.request;
 
-@safe:
 import uim.net;
-
-use Psr\Http\Client\RequestExceptionInterface;
-use Psr\Http\messages.RequestInterface;
-use RuntimeException;
-use Throwable;
+@safe:
 
 /**
  * Exception for when a request failed.
@@ -16,8 +11,7 @@ use Throwable;
  *   - Request is invalid (e.g. method is missing)
  *   - Runtime request errors (e.g. the body stream is not seekable)
  */
-class RequestException : RuntimeException : RequestExceptionInterface
-{
+class RequestException : RuntimeException, IRequestException {
     /**
      * @var \Psr\Http\messages.RequestInterface
      */
@@ -42,8 +36,7 @@ class RequestException : RuntimeException : RequestExceptionInterface
      *
      * @return \Psr\Http\messages.RequestInterface
      */
-    function getRequest(): RequestInterface
-    {
+    IRequest getRequest() {
         return this.request;
     }
 }
