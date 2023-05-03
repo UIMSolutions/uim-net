@@ -1,4 +1,4 @@
-module uim.net.https\Middleware;
+module uim.net.https.middlewares;
 
 import uim.net;
 @safe:
