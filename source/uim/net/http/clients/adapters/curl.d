@@ -18,7 +18,7 @@ import uim.net;
  */
 class Curl : IAdapter {
 
-    array send(IRequest $request, STRINGAA someOptions) {
+    IResponse[] send(IRequest myRequest, Json options = Json(null)) {
         if (!extension_loaded("curl")) {
             throw new ClientException("curl extension is not loaded.");
         }

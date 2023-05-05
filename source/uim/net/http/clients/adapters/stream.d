@@ -14,8 +14,7 @@ import uim.net;
  *
  * This approach and implementation is partly inspired by Aura.Http
  */
-class Stream : IAdapter
-{
+class Stream : IAdapter {
     /**
      * Context resource used by the stream API.
      *
@@ -51,17 +50,16 @@ class Stream : IAdapter
      */
     protected _connectionErrors = null;
 
+    IResponse[] send(IRequest myRequest, Json options = Json(null)) {
+      _stream = null;
+      _context = null;
+      _contextOptions = null;
+      _sslContextOptions = null;
+      _connectionErrors = null;
 
-    array send(IRequest $request, STRINGAA someOptions) {
-        _stream = null;
-        _context = null;
-        _contextOptions = null;
-        _sslContextOptions = null;
-        _connectionErrors = null;
+      _buildContext($request, $options);
 
-        _buildContext($request, $options);
-
-        return _send($request);
+      return _send($request);
     }
 
     /**

@@ -18,14 +18,15 @@ class Basic {
     * returns DHTPRequest The updated request.
     * @see https://www.ietf.org/rfc/rfc2617.txt
     */
-  Request authentication(Request $request, array $credentials) {
+  Request authentication(Request aRequest, array $credentials) {
+    auto result = aRequest;
     if (isset($credentials["username"], $credentials["password"])) {
       $value = _generateHeader($credentials["username"], $credentials["password"]);
       /** var DHTP.Client\Request $request */
-      $request = $request.withHeader("Authorization", $value);
+      result = aRequest.withHeader("Authorization", $value);
     }
 
-    return $request;
+    return result;
   }
 
   /**
